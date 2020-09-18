@@ -1,7 +1,153 @@
 @import "./includes/_config.scss";
 
-html, body {
+$wrap-padding : 1.5em;
+$wrap-lr-padding : 0 1.5em;
+$wrap-tb-padding : 1.5em 0;
+$transition-3s : all .3s ease;
+
+.container {
   width: 100%;
-  height: 100%;
-  font-family: $sans-serif;
+  min-height: 100%;
+  box-sizing: border-box;
+
+  .header {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+
+    .header-container {
+      width: 100%;
+    }
+
+    .header-icon-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: $wrap-lr-padding;
+    }
+    
+    .header-icon-wrap .header-icon-items {
+      width: 30px;
+      line-height: 0.5;
+      cursor: pointer;
+    }
+
+    .header-icon-wrap .header-icon-items .header-icon-line {
+      display: inline-block;
+      width: 100%;
+      height: 2px;
+      border-radius: 3px;
+      background: $custom-turquoise-blue;
+      transition: $transition-3s;
+    }
+
+    .header-icon-line.menu-icon-line.close-button {
+      position: relative;
+      z-index: 10;
+      transform: rotate(45deg);
+      transform-origin: 8px;
+      background: $white;
+      transition: $transition-3s;
+
+      &:last-child {
+        transform: rotate(-45deg);
+      }
+
+    }
+    
+    .header-contact-icon {
+      position: relative;
+      float: right;
+      transition: $transition-3s;
+    }
+
+    .header-contact-icon.close-button {
+      transform: rotate(45deg);
+      transition: $transition-3s;
+    }
+
+    .header-icon-line.contact-icon-line {
+      width: 80%;
+    }
+
+    .header-contact-icon .contact-icon-line:nth-child(2) {
+      position: absolute;
+      top: 90%;
+      left: 0;
+      transform: rotate(90deg);
+    }
+
+
+    .header-navigation {
+      position: absolute;
+      top: 0;
+      width: 0;
+      height: 100%;
+      overflow: hidden;
+      transition: $transition-3s;
+      background: $custom-turquoise-blue;
+
+      &.nav-on {
+        display: block;
+        width: 80%;
+        transition: $transition-3s;
+      }
+    }
+
+    .header-navigation .navigation-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .header-navigation .navigation-container .navigation-menu-items {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      text-align: center;
+    }
+
+    .navigation-container .navigation-menu-items .navigation-menu-item {
+      line-height: 3;
+      font-size: 1.5em;
+    }
+
+    .navigation-menu-items .navigation-menu-item > a {
+      display: block;
+      color: $white;
+    }
+
+    .header-contact-items {
+      position: absolute;
+      top: 50%;
+      width: 0;
+      overflow: hidden;
+      transform: translateY(-50%);
+      transition: $transition-3s;
+      right: 100px;
+    }
+
+    .header-contact-items.contact-on {
+      width: 50%;
+      height: 28px;
+      transition: $transition-3s;
+    }
+
+    .header-contact-items > ul {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-contact-items > ul .header-contact-item {
+      margin-left: 1em;
+    }
+
+    .header-contact-items > ul .header-contact-item > a {
+      font-size: 1.5em;
+      color: $custom-turquoise-blue;
+    }
+  }
 }
