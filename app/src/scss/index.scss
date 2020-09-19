@@ -1,7 +1,85 @@
 @import "./includes/_config.scss";
-
-html, body {
+img {
   width: 100%;
-  height: 100%;
-  background: $black;
+}
+
+.main-container {
+  width: 100%;
+  min-height: 100%;
+  
+  .main-title-container {
+    display: flex;
+    align-items: center;
+    text-align: center; 
+    justify-content: center;
+    height: 100vh;
+    font-family: $serif;
+    color: $custom-turquoise-blue;
+
+    .main-title-items{
+      h2 {
+        font-size: 5em;
+      }
+
+      span {
+        display: inline-block;
+        margin-top: 2em;
+        letter-spacing: 1em;
+        text-transform: uppercase;
+        font-family: $monospace;
+        font-size: 1em;
+        color: $custom-light-turquoise-blue;
+      }
+    }
+  }
+  
+
+  .main-contents-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 5em;
+
+    .main-contents-items {
+      position: relative;
+      flex: 0 0 40%;
+      margin-bottom: 5em;
+
+      .main-contents-item {
+        background: url(../img/contents_01.jpg) no-repeat;
+        background-size: cover;
+        min-height: 400px;
+      }
+
+      &.small-article{
+        flex: 0 0 30%;
+        transform: translateY(10%);
+      }
+
+      .figure-title {
+        position: absolute;
+        top: 30%;
+        font-family: $serif;
+        font-size: 3em;
+        color: $custom-turquoise-blue;
+        border-bottom: 2px solid $custom-turquoise-blue;
+        padding-bottom: 8px;
+      }
+
+      &:nth-child(even) .figure-title{
+        left: -20%;
+      }
+
+      &:nth-child(odd) .figure-title{
+        top: 50%;
+        right: -20%;
+      }
+    }   
+  }
+
+  .main-text-container {
+    background: url(../img/fullmoon_yellow.jpg) no-repeat;
+    background-size: cover;
+    height: 50vh;
+  }
 }
