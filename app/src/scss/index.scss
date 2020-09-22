@@ -5,7 +5,6 @@ $wrap-lr-padding : 0 1.5em;
 $wrap-tb-padding : 1.5em 0;
 $transition-3s : all .3s ease;
 
-
 .header {
   position: fixed;
   top: 0;
@@ -147,5 +146,121 @@ $transition-3s : all .3s ease;
       }
     }
     
+  }
+}
+
+.main-container {
+  width: 100%;
+  min-height: 100%;
+  
+  .main-title-container {
+    display: flex;
+    align-items: center;
+    text-align: center; 
+    justify-content: center;
+    height: 100vh;
+    font-family: $serif;
+    color: $custom-turquoise-blue;
+
+    .main-title-items{
+      /*position: fixed;*/
+      z-index: -1;
+      -ms-top: 50%;
+      -ms-left: 50%;
+      /*-ms-transform: translate(-50%, -50%);*/
+
+      &.main-title-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        min-height: 100vh;
+        background-color: #f5f5f5;
+        z-index: -1;
+        -ms-transform: translate(0, 0);
+      }
+      h2 {
+        font-size: 5em;
+      }
+
+      span {
+        display: inline-block;
+        margin-top: 2em;
+        letter-spacing: 1em;
+        text-transform: uppercase;
+        font-family: $monospace;
+        font-size: 1em;
+        color: $custom-light-turquoise-blue;
+      }
+    }
+  }
+  
+
+  .main-contents-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
+    padding: 5em;
+
+    .main-contents-items {
+      position: relative;
+      flex: 0 0 50%;
+      margin-bottom: 5em;
+
+      &:nth-child(odd) .main-contents-item{
+        margin-right: auto;
+      }
+
+      &:nth-child(even) .main-contents-item{
+        margin-left: auto;
+      }
+
+      .main-contents-item {
+        position: relative;
+        height: 500px;
+        max-width: 400px;        
+        background: url(../img/contents_01.jpg) no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      .main-contents-item > a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+      }
+
+      &.small-article .main-contents-item{
+        transform: translateY(-40px);
+        max-width: 300px;
+      }
+
+      .figure-title {
+        position: absolute;
+        top: 30%;
+        font-family: $serif;
+        font-size: 2.5em;
+        color: $custom-turquoise-blue;
+        border-bottom: 2px solid $custom-turquoise-blue;
+        padding-bottom: 8px;
+      }
+
+      &:nth-child(odd) .figure-title{
+        right: -20%;
+      }
+
+      &:nth-child(even) .figure-title{
+        top: 50%;
+        left: -20%;
+      }
+    }   
+  }
+
+  .main-text-container {
+    background: url(../img/fullmoon_yellow.jpg) no-repeat;
+    background-size: cover;
+    height: 50vh;
   }
 }
