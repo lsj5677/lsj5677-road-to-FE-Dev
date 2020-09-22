@@ -163,11 +163,9 @@ $transition-3s : all .3s ease;
     color: $custom-turquoise-blue;
 
     .main-title-items{
-      /*position: fixed;*/
       z-index: -1;
       -ms-top: 50%;
       -ms-left: 50%;
-      /*-ms-transform: translate(-50%, -50%);*/
 
       &.main-title-image {
         position: absolute;
