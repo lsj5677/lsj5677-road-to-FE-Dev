@@ -1,4 +1,5 @@
 @import "./includes/_config.scss";
+
 img {
   width: 100%;
 }
@@ -17,6 +18,22 @@ img {
     color: $custom-turquoise-blue;
 
     .main-title-items{
+      /*position: fixed;*/
+      z-index: -1;
+      -ms-top: 50%;
+      -ms-left: 50%;
+      /*-ms-transform: translate(-50%, -50%);*/
+
+      &.main-title-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        min-height: 100vh;
+        background-color: #f5f5f5;
+        z-index: -1;
+        -ms-transform: translate(0, 0);
+      }
       h2 {
         font-size: 5em;
       }
@@ -38,41 +55,61 @@ img {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
     padding: 5em;
+    background: $white;
 
     .main-contents-items {
       position: relative;
-      flex: 0 0 40%;
+      flex: 0 0 50%;
       margin-bottom: 5em;
 
-      .main-contents-item {
-        background: url(../img/contents_01.jpg) no-repeat;
-        background-size: cover;
-        min-height: 400px;
+      &:nth-child(odd) .main-contents-item{
+        margin-right: auto;
       }
 
-      &.small-article{
-        flex: 0 0 30%;
-        transform: translateY(10%);
+      &:nth-child(even) .main-contents-item{
+        margin-left: auto;
+      }
+
+      .main-contents-item {
+        position: relative;
+        height: 500px;
+        max-width: 400px;        
+        background: url(../img/contents_01.jpg) no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      .main-contents-item > a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+      }
+
+      &.small-article .main-contents-item{
+        transform: translateY(-40px);
+        max-width: 300px;
       }
 
       .figure-title {
         position: absolute;
         top: 30%;
         font-family: $serif;
-        font-size: 3em;
+        font-size: 2.5em;
         color: $custom-turquoise-blue;
         border-bottom: 2px solid $custom-turquoise-blue;
         padding-bottom: 8px;
       }
 
-      &:nth-child(even) .figure-title{
-        left: -20%;
+      &:nth-child(odd) .figure-title{
+        right: -20%;
       }
 
-      &:nth-child(odd) .figure-title{
+      &:nth-child(even) .figure-title{
         top: 50%;
-        right: -20%;
+        left: -20%;
       }
     }   
   }
