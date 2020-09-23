@@ -1,14 +1,14 @@
 (() => {
-  const mainConItem = document.querySelectorAll('.main-contents-items');
+  const mainContainer = document.querySelector('.main-container');
 
-  function mainContentsEffect() {
+  function mainContainerScroll() {
     let pageY = pageYOffset / 6;
-    mainConItem.forEach((item) => {
-      item.style.transform = `translateY(-${pageY}px)`;
-      item.style.transition = `transform .5s ease`;
-    });
+
+    mainContainer.style.transform = `translateY(-${pageY}px)`;
+    mainContainer.style.transition = `transform .8s ease`;
   }
 
-  document.addEventListener('scroll', mainContentsEffect);
+
+  document.addEventListener('scroll', mainContainerScroll);
 
 })();

@@ -4,6 +4,20 @@ $wrap-padding : 1.5em;
 $wrap-lr-padding : 0 1.5em;
 $wrap-tb-padding : 1.5em 0;
 $transition-3s : all .3s ease;
+$transition-8s : all .8s ease;
+
+body::-webkit-scrollbar {
+  width: 5px;
+  background: $custom-light-gray;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: $custom-turquoise-blue;
+  border-radius: 8px;
+}
+body::-webkit-scrollbar-track {
+  background: $custom-light-gray;
+}
 
 .main-container {
   width: 100%;
@@ -54,7 +68,7 @@ $transition-3s : all .3s ease;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     padding: 5em;
 
@@ -102,12 +116,28 @@ $transition-3s : all .3s ease;
       }
 
       &:nth-child(odd) .figure-title{
-        right: -20%;
+        opacity: 0;
+        right: 0;
+        transition: $transition-3s
       }
 
       &:nth-child(even) .figure-title{
+        opacity: 0;
         top: 50%;
+        left: 0;
+        transition: $transition-3s
+      }
+
+      &:nth-child(odd) .main-contents-item:hover .figure-title {
+        opacity: 1;
+        right: -20%;
+        transition: $transition-8s
+      }
+
+      &:nth-child(even) .main-contents-item:hover .figure-title {
+        opacity: 1;
         left: -20%;
+        transition: $transition-8s
       }
     }   
   }
