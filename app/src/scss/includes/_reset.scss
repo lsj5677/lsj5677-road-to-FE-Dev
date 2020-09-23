@@ -63,3 +63,17 @@ table {
 	 text-decoration: none;
 	 color: $black;
  }
+
+ 
+body::-webkit-scrollbar {
+  width: 5px;
+  background: $custom-light-gray;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: $custom-turquoise-blue;
+  border-radius: 8px;
+}
+body::-webkit-scrollbar-track {
+  background: $custom-light-gray;
+}

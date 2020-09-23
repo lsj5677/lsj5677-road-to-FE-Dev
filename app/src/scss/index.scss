@@ -4,6 +4,7 @@ $wrap-padding : 1.5em;
 $wrap-lr-padding : 0 1.5em;
 $wrap-tb-padding : 1.5em 0;
 $transition-3s : all .3s ease;
+$transition-8s : all .8s ease;
 
 .header {
   top: 0;
@@ -156,27 +157,6 @@ $transition-3s : all .3s ease;
   }
 }
 
-@import "./includes/_config.scss";
-
-$wrap-padding : 1.5em;
-$wrap-lr-padding : 0 1.5em;
-$wrap-tb-padding : 1.5em 0;
-$transition-3s : all .3s ease;
-$transition-8s : all .8s ease;
-
-body::-webkit-scrollbar {
-  width: 5px;
-  background: $custom-light-gray;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: $custom-turquoise-blue;
-  border-radius: 8px;
-}
-body::-webkit-scrollbar-track {
-  background: $custom-light-gray;
-}
-
 .main-container {
   width: 100%;
   min-height: 100%;
@@ -220,7 +200,6 @@ body::-webkit-scrollbar-track {
       }
     }
   }
-  
 
   .main-contents-container {
     display: flex;
