@@ -6,12 +6,8 @@ $wrap-tb-padding : 1.5em 0;
 $transition-3s : all .3s ease;
 
 .header {
-  position: fixed;
   top: 0;
   width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
 
   .header-container {
     width: 100%;
@@ -26,6 +22,10 @@ $transition-3s : all .3s ease;
         width: 30px;
         line-height: 0.5;
         cursor: pointer;
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
       }
 
       .header-icon-items .header-icon-line {
@@ -54,7 +54,7 @@ $transition-3s : all .3s ease;
     
     .header-contact-icon {
       position: relative;
-      float: right;
+      right: 20px;
       transition: $transition-3s;
 
       &.close-button {
@@ -76,14 +76,16 @@ $transition-3s : all .3s ease;
 
     .header-navigation {
       position: absolute;
+      z-index: 5;
       top: 0;
       width: 0;
       height: 100%;
       overflow: hidden;
-      transition: $transition-3s;
       background: $custom-turquoise-blue;
+      transition: $transition-3s;
   
       &.nav-on {
+        position: fixed;
         display: block;
         width: 80%;
         transition: $transition-3s;
@@ -118,16 +120,21 @@ $transition-3s : all .3s ease;
 
     .header-contact-items {
       position: absolute;
+      z-index: 5;
       top: 50%;
+      display: flex;
       width: 0;
+      height: 100vh;
+      justify-content: center;
       overflow: hidden;
       transform: translateY(-50%);
+      right: 0;
       transition: $transition-3s;
-      right: 100px;
 
       &.contact-on {
-        width: 50%;
-        height: 28px;
+        position: fixed;
+        width: 100%;
+        background: $custom-light-turquoise-blue;
         transition: $transition-3s;
       }
 
@@ -147,6 +154,27 @@ $transition-3s : all .3s ease;
     }
     
   }
+}
+
+@import "./includes/_config.scss";
+
+$wrap-padding : 1.5em;
+$wrap-lr-padding : 0 1.5em;
+$wrap-tb-padding : 1.5em 0;
+$transition-3s : all .3s ease;
+$transition-8s : all .8s ease;
+
+body::-webkit-scrollbar {
+  width: 5px;
+  background: $custom-light-gray;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: $custom-turquoise-blue;
+  border-radius: 8px;
+}
+body::-webkit-scrollbar-track {
+  background: $custom-light-gray;
 }
 
 .main-container {
@@ -198,7 +226,7 @@ $transition-3s : all .3s ease;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     padding: 5em;
 
@@ -246,19 +274,29 @@ $transition-3s : all .3s ease;
       }
 
       &:nth-child(odd) .figure-title{
-        right: -20%;
+        opacity: 0;
+        right: 0;
+        transition: $transition-8s
       }
 
       &:nth-child(even) .figure-title{
+        opacity: 0;
         top: 50%;
+        left: 0;
+        transition: $transition-8s
+      }
+
+      &:nth-child(odd) .main-contents-item:hover .figure-title {
+        opacity: 1;
+        right: -20%;
+        transition: $transition-8s
+      }
+
+      &:nth-child(even) .main-contents-item:hover .figure-title {
+        opacity: 1;
         left: -20%;
+        transition: $transition-8s
       }
     }   
-  }
-
-  .main-text-container {
-    background: url(../img/fullmoon_yellow.jpg) no-repeat;
-    background-size: cover;
-    height: 50vh;
   }
 }
