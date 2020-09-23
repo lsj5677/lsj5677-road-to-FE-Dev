@@ -4,7 +4,7 @@
   const contactIcon = document.querySelector('.header-contact-icon');
   const CLOSE = 'close-button';
 
-  function NavOn() {
+  function navOn() {
     const headerNavigation = document.querySelector('.header-navigation');
     const menuIconLine = document.querySelectorAll('.menu-icon-line');
 
@@ -27,7 +27,7 @@
     mainContainer.style.transition = `transform .8s ease`;
   }
 
-  menuIcon.addEventListener('click', NavOn);
+  menuIcon.addEventListener('click', navOn);
   contactIcon.addEventListener('click', contactOn);
   document.addEventListener('scroll', mainContainerScroll);
 
