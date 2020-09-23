@@ -4,19 +4,149 @@ $wrap-padding : 1.5em;
 $wrap-lr-padding : 0 1.5em;
 $wrap-tb-padding : 1.5em 0;
 $transition-3s : all .3s ease;
-$transition-8s : all .8s ease;
 
-body::-webkit-scrollbar {
-  width: 5px;
-  background: $custom-light-gray;
-}
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
 
-body::-webkit-scrollbar-thumb {
-  background: $custom-turquoise-blue;
-  border-radius: 8px;
-}
-body::-webkit-scrollbar-track {
-  background: $custom-light-gray;
+  .header-container {
+    width: 100%;
+
+    .header-icon-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: $wrap-lr-padding;
+      
+      .header-icon-items {
+        width: 30px;
+        line-height: 0.5;
+        cursor: pointer;
+      }
+
+      .header-icon-items .header-icon-line {
+        display: inline-block;
+        width: 100%;
+        height: 2px;
+        border-radius: 3px;
+        background: $custom-turquoise-blue;
+        transition: $transition-3s;
+      }
+    }
+
+    .header-icon-line.menu-icon-line.close-button {
+      position: relative;
+      z-index: 10;
+      transform: rotate(45deg);
+      transform-origin: 8px;
+      background: $white;
+      transition: $transition-3s;
+  
+      &:last-child {
+        transform: rotate(-45deg);
+      }
+  
+    }
+    
+    .header-contact-icon {
+      position: relative;
+      float: right;
+      transition: $transition-3s;
+
+      &.close-button {
+        transform: rotate(45deg);
+        transition: $transition-3s;
+      }
+
+      .contact-icon-line {
+        width: 80%;
+      }
+
+      .contact-icon-line:nth-child(2) {
+        position: absolute;
+        top: 90%;
+        left: 0;
+        transform: rotate(90deg);
+      }
+    }
+
+    .header-navigation {
+      position: absolute;
+      top: 0;
+      width: 0;
+      height: 100%;
+      overflow: hidden;
+      transition: $transition-3s;
+      background: $custom-turquoise-blue;
+  
+      &.nav-on {
+        display: block;
+        width: 80%;
+        transition: $transition-3s;
+      }
+
+      .navigation-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      .navigation-container .navigation-menu-items {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        text-align: center;
+      }
+
+      .navigation-container .navigation-menu-items .navigation-menu-item {
+        line-height: 3;
+        font-size: 1.5em;
+      }
+
+      .navigation-menu-items .navigation-menu-item > a {
+        display: block;
+        color: $white;
+      }
+
+    }
+
+    .header-contact-items {
+      position: absolute;
+      top: 50%;
+      width: 0;
+      overflow: hidden;
+      transform: translateY(-50%);
+      transition: $transition-3s;
+      right: 100px;
+
+      &.contact-on {
+        width: 50%;
+        height: 28px;
+        transition: $transition-3s;
+      }
+
+      & > ul {
+        display: flex;
+        align-items: center;
+      }
+
+      & > ul .header-contact-item {
+        margin-left: 1em;
+      }
+
+      & > ul .header-contact-item > a {
+        font-size: 1.5em;
+        color: $custom-turquoise-blue;
+      }
+    }
+    
+  }
 }
 
 .main-container {
@@ -68,7 +198,7 @@ body::-webkit-scrollbar-track {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
     padding: 5em;
 
@@ -116,28 +246,12 @@ body::-webkit-scrollbar-track {
       }
 
       &:nth-child(odd) .figure-title{
-        opacity: 0;
-        right: 0;
-        transition: $transition-3s
+        right: -20%;
       }
 
       &:nth-child(even) .figure-title{
-        opacity: 0;
         top: 50%;
-        left: 0;
-        transition: $transition-3s
-      }
-
-      &:nth-child(odd) .main-contents-item:hover .figure-title {
-        opacity: 1;
-        right: -20%;
-        transition: $transition-8s
-      }
-
-      &:nth-child(even) .main-contents-item:hover .figure-title {
-        opacity: 1;
         left: -20%;
-        transition: $transition-8s
       }
     }   
   }
