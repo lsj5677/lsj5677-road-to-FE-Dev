@@ -2,9 +2,9 @@
   const mainContainer = document.querySelector('.main-container');
 
   function mainContainerScroll() {
-    let pageY = pageYOffset / 6;
+    let pageYOffset = pageYOffset / 6;
 
-    mainContainer.style.transform = `translateY(-${pageY}px)`;
+    mainContainer.style.transform = `translateY(-${pageYOffset}px)`;
     mainContainer.style.transition = `transform .8s ease`;
   }
 
