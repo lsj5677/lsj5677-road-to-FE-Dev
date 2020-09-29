@@ -1,0 +1,210 @@
+@import "./includes/_config.scss";
+
+$transition-3s : all .3s ease-in-out;
+
+%header-icon-btn {
+  background: none;
+  outline: none;
+  border: none;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px; 
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+}
+
+%header-icon-line {
+  display: inline-block;
+  width: 100%;
+  height: 2px;
+  border-radius: 3px;
+  background: $custom-turquoise-blue;
+  transition: $transition-3s;
+}
+
+%header-menu-wrapper {
+  position: fixed;
+  top: 0;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  background: $custom-turquoise-blue;
+  transition: $transition-3s;
+  z-index: 1;
+}
+
+%header-menu-link {
+  display: block;
+  color: $white;
+}
+
+.header-container {
+  width: 100%;
+
+  .nav-icon-btn {
+    @extend %header-icon-btn;
+    left: 20px;
+
+    .nav-icon-line {
+      @extend %header-icon-line;
+    }
+
+    &.close-btn {
+      z-index: 5;
+      transition: $transition-3s;
+
+      .nav-icon-line {
+        transform: rotate(45deg);
+        transform-origin: 6px;
+        background: $white;
+      }
+
+      .nav-icon-line:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  .header-navigation {
+    @extend %header-menu-wrapper;
+
+    &.nav-on {
+      width: 80%;
+      transition: $transition-3s;
+    }
+
+    .navigation-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+
+      .navigation-items {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        text-align: center;
+        min-width: 210px;
+      }
+
+      .navigation-items .navigation-item {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+
+      .navigation-items .navigation-item > a {
+        @extend %header-menu-link;
+        line-height: 1.5;
+
+        span {
+          display: block;
+          font-size: 13px;
+        }
+
+        &:hover {
+          color: $black;
+          transition: color .3s ease;
+        }
+      }
+    }
+  }
+
+  .contact-icon-btn {
+    @extend %header-icon-btn;
+    right: 20px;
+    transition: $transition-3s;
+
+    .contact-icon-line {
+      @extend %header-icon-line;
+
+      &:last-child {
+        transform: translateY(-12px) rotate(90deg);
+      }
+    }
+
+    &.close-btn {
+      z-index: 5;
+      transition: $transition-3s;
+      transform: rotate(45deg);
+      transform-origin: right;
+
+      .contact-icon-line {
+        background: $white;
+      }
+    }
+  }
+
+  .header-contact {
+    @extend %header-menu-wrapper;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.contact-on {
+      width: 30%;
+      transition: $transition-3s;
+    }
+
+    .contact-container {
+      width: 70%;
+      min-width: 200px;
+
+      .contact-info-items {
+        text-align: center;
+
+        &::after {
+          content: '';
+          width: 100%;
+          height: 1px;
+          display: inline-block;
+          background: $white;
+          margin: 5em auto 2em;
+        }
+      }
+
+      .contact-info-items .contact-info-item {
+        font-size: 13px;
+        line-height: 2;
+        color: $white;
+
+        &:nth-child(2){
+          text-transform: uppercase;
+          font-size: 15px;
+        }
+
+        .contact-info-img {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          margin-bottom: 30px;
+        }
+      }
+
+      .contact-sns-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      .contact-sns-items .contact-sns-item > a {
+        @extend %header-menu-link;
+        font-size: 1.5em;
+
+        i {
+          font-size: 20px;
+        }
+
+        &:hover {
+          color: $black;
+          transition: color .3s ease;
+        }
+      }
+    }
+  }
+}
