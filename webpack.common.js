@@ -34,7 +34,10 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"]
+            presets: [["@babel/preset-env", {
+              useBuiltIns: "usage", // or "entry"
+              corejs: 3,
+            }]]
           }
         },
         exclude: /node_modules/
