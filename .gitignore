@@ -1,3 +1,6 @@
 node_modules/
 package_lock.json
 app/dist
+app/src/index_bak.html
+app/src/js/index_bak.js
+app/src/scss/index_bak.scss
