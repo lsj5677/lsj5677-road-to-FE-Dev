@@ -1,0 +1,114 @@
+@import "./includes/_config.scss";
+
+%animation-effect {
+  animation: animatedBg 3s ease-in-out;
+  animation-delay: 2s;
+}
+
+.intro {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: $custom-turquoise-blue;
+  z-index: 2;
+  overflow: hidden;
+
+  .intro-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    
+    h1 {
+      font-size: 5em;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-family: $serif;
+      color: $white;
+    }
+
+    .letter {
+      display: inline-block;
+      line-height: 1.5;
+    }
+  }
+}
+
+
+.main-contents {
+  .main-contents-items{
+    display: flex;
+
+    .contents-left-item {
+      width: 50%;
+      height: 100vh;
+
+      .contents-left-img {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: 50vh;
+        background: url('../img/fullmoon_yellow.jpg') no-repeat center center;
+        background-size: 200%;
+        @extend %animation-effect;
+      }
+    }
+
+    .contents-right-item {
+      width: 50%;
+      height: 100vh;
+      left: 50%;
+      background: url(../img/contents_01.jpg) no-repeat center center;
+      background-size: 100%;
+      @extend %animation-effect;
+    }
+  }
+}
+
+
+.main-scroll-contents {
+  width: 80%;
+  margin: 0 auto;
+
+  .scroll-contents-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20% auto;
+
+    .scroll-contents-item {
+      position: relative;
+      width: 40%;
+      height: 80vh;
+      max-height: 600px;
+      overflow: hidden;
+
+      &:nth-child(2n){
+        margin-top: 20%;
+      }
+
+      .scroll-img-box {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: translate3d(0, 0, 0);
+        transition: transform .5s ease-in-out;
+      }
+
+      .scroll-img-box .scroll-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 110%;
+        width: 100%;
+        background-size: cover;
+        background-position: 50%;
+        background-image: url("https://picsum.photos/400/700");
+        @extend %animation-effect;
+      }
+    }
+  }
+}
