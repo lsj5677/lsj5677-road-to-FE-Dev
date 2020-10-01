@@ -33,3 +33,21 @@ TweenMax.to(".intro", 2, {
   top: "-100%",
   ease: Expo.easeInOut
 });
+
+const scrollImgBoxes = document.querySelectorAll('.scroll-img-box');
+const chkScrollImg = () => {
+  scrollImgBoxes.forEach((scrollImgBox) => {
+    const scrollContentsItem = scrollImgBox.parentElement;
+    const scrollImg = scrollImgBox.children[0].children[0];
+    const scrollAt = window.scrollY + window.innerHeight > scrollContentsItem.offsetTop;
+
+    if (scrollAt) {
+      const pointY = window.scrollY + window.innerHeight - scrollContentsItem.offsetTop;
+      const calcPoint = 2 - (pointY + scrollImg.clientHeight / 2) / scrollImg.clientHeight;
+
+      scrollImgBox.style.transform = `translate3d(0, ${calcPoint * 90}px, 0)`;
+    }
+  });
+}
+
+window.addEventListener('scroll', chkScrollImg);

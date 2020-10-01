@@ -5,6 +5,10 @@
   animation-delay: 2s;
 }
 
+.main {
+  background: linear-gradient(120deg, #fdfbfb 0%, #ebedee);
+}
+
 .intro {
   position: fixed;
   width: 100%;
@@ -17,7 +21,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate3d(-50%,-50%,0);
     text-align: center;
     
     h1 {
@@ -43,12 +47,19 @@
     .contents-left-item {
       width: 50%;
       height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 3em;
+      font-family: $serif;
+      line-height: 1.3;
 
       .contents-left-img {
         position: relative;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate3d(-50%,-50%,0);
         width: 50%;
         height: 50vh;
         background: url('../img/fullmoon_yellow.jpg') no-repeat center center;
@@ -77,7 +88,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 20% auto;
+    padding: 10% 0;
 
     .scroll-contents-item {
       position: relative;
@@ -96,6 +107,11 @@
         height: 100%;
         transform: translate3d(0, 0, 0);
         transition: transform .5s ease-in-out;
+
+        &:hover .scroll-img .scroll-img-title {
+          opacity: 1;
+          transition: opacity .5s ease-in-out;
+        }
       }
 
       .scroll-img-box .scroll-img {
@@ -108,6 +124,23 @@
         background-position: 50%;
         background-image: url("https://picsum.photos/400/700");
         @extend %animation-effect;
+      }
+
+      .scroll-img .scroll-img-title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        width: 80%;
+        text-align: center;
+        font-family: $serif;
+        font-size: 2.5em;
+        color: $black;
+        padding-bottom: 8px;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 10% 0;
+        opacity: 0;
+        transition: opacity .5s ease-in-out;
       }
     }
   }
