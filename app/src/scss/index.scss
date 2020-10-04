@@ -13,6 +13,7 @@ $transition-3s : all .3s ease-in-out;
   line-height: 1;
   padding: 0;
   cursor: pointer;
+  z-index: 10;
 }
 
 %header-icon-line {
@@ -32,12 +33,61 @@ $transition-3s : all .3s ease-in-out;
   overflow: hidden;
   background: $custom-turquoise-blue;
   transition: $transition-3s;
-  z-index: 1;
+  z-index: 3;
 }
 
 %header-menu-link {
   display: block;
   color: $white;
+}
+
+body {
+  background: $black;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  border: 1px solid $custom-light-gray;
+  border-radius: 50%;
+  margin: {
+    top: -30px;
+    left: -30px;
+  }
+  pointer-events: none;
+  z-index: 5;
+
+  .more-shape {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -40%, 0);
+    display: flex;
+    font-size: 1em;
+    color: $custom-light-gray;
+    opacity: 0;
+  }
+}
+
+.intro {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: $custom-turquoise-blue;
+  z-index: 10;
+
+  h4 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    font-size: 5em;
+    font-family: $serif;
+    text-align: center;
+    text-transform: uppercase;
+    color: $white;
+  }
 }
 
 .header-container {
@@ -208,3 +258,141 @@ $transition-3s : all .3s ease-in-out;
     }
   }
 }
+
+.main-container {
+  width: 90%;
+  min-height: 100%;
+  margin: 0 auto;
+
+  .main-title-contents {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    h2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 2em;
+      color: $custom-light-turquoise-blue;
+      text-shadow: -1px -1px 0 $custom-turquoise-blue;
+      font-family: $sans-serif;
+      transform: rotate(90deg);
+      text-transform: uppercase;
+      animation: animatedRightTitle 4s ease-in-out;
+      -moz-animation: animatedRightTitle 4s ease-in-out;
+      -ms-animation: animatedRightTitle 4s ease-in-out;
+      -o-animation: animatedRightTitle 4s ease-in-out;
+      animation-delay: 3s;
+      -moz-animation-delay: 3s;
+      -ms-animation-delay: 3s;
+      -o-animation-delay: 3s;
+      
+    }
+
+    h3 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-150%);
+      font-size: 3em;
+      display: flex;
+      flex-direction: column;
+      color: $custom-light-gray;
+      font-family: $serif;
+      z-index: 2;
+      animation: animatedLeftTitle 4s ease-in-out;
+      -moz-animation: animatedLeftTitle 4s ease-in-out;
+      -ms-animation: animatedLeftTitle 4s ease-in-out;
+      -o-animation: animatedLeftTitle 4s ease-in-out;
+      animation-delay: 3s;
+      -moz-animation-delay: 3s;
+      -ms-animation-delay: 3s;
+      -o-animation-delay: 3s;
+    }
+
+    .title-img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      width: 400px;
+      height: 600px;
+      background: url(../img/main_img.jpg) no-repeat center center;
+      background-size: cover;
+      animation: animatedTitleImg 3s ease-in-out;
+      -moz-animation: animatedTitleImg 3s ease-in-out;
+      -ms-animation: animatedTitleImg 3s ease-in-out;
+      -o-animation: animatedTitleImg 3s ease-in-out;
+      animation-delay: 3s;
+      -moz-animation-delay: 3s;
+      -ms-animation-delay: 3s;
+      -o-animation-delay: 3s;
+    }
+  }
+
+  .main-work-contents {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 5em 0;
+
+    .work-img-box {
+      position: relative;
+      width: 40%;
+      height: 50vh;
+      max-height: 600px;
+      display: flex;
+      justify-content: center;
+      cursor: none;
+
+      &:nth-child(odd) {
+        .work-img {
+          background: url(../img/fullmoon_yellow.jpg) no-repeat center center;
+          background-size: cover;
+        }
+        span {
+          right: -10%;
+        }
+      }
+
+      &:nth-child(even) {
+        margin-top: 5em;
+
+        .work-img {
+          background: url(../img/contents_01.jpg) no-repeat center center;
+          background-size: cover;
+        }
+
+        span {
+          left: -10%;
+        }
+      }
+
+      a {
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .work-img {
+        height: 100%;
+      }
+
+      span {
+        position: absolute;
+        top: 50%;
+        display: block;
+        font-size: 3em;
+        font-family: $serif;
+        color: $custom-light-turquoise-blue;
+        border-bottom: 3px solid $custom-light-turquoise-blue;
+        padding-bottom: 5px;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+}
+

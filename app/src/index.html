@@ -4,22 +4,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Road to FE Developer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
     crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </head>
 
 <body>
   <div class="wrap">
     <div class="container">
+      <div class="custom-cursor">
+        <span class="more-shape">
+          <i class='fas fa-plus-circle'></i>
+        </span>
+      </div>
+      <div class="intro">
+        <h4>Lee sujin</h4>
+      </div>
       <header class="header">
         <div class="header-container">
-          <button class="nav-icon-btn">
+          <button class="nav-icon-btn btn-icon">
             <span class="nav-icon-line"></span>
             <span class="nav-icon-line"></span>
           </button>
-
           <nav class="header-navigation">
             <div class="navigation-container">
               <ul class="navigation-items">
@@ -58,12 +71,10 @@
               </ul>
             </div>
           </nav>
-
-          <button class="contact-icon-btn">
+          <button class="contact-icon-btn btn-icon">
             <span class="contact-icon-line"></span>
             <span class="contact-icon-line"></span>
           </button>
-
           <div class="header-contact">
             <div class="contact-container">
               <ul class="contact-info-items">
@@ -98,6 +109,68 @@
           </div>
         </div>
       </header>
+      <main class="main">
+        <div class="main-container">
+          <section class="main-title-section">
+            <div class="main-title-contents">
+              <h2 class="title-text">
+                Road to FrontEnd Developer
+              </h2>
+              <h3 class="title-text">
+                <span>Curiosity</span>
+                <span>Challenge</span>
+                <span>Growth</span>
+              </h3>
+              <div class="title-img"></div>
+            </div>
+          </section>
+          <section class="main-work-section">
+            <div class="main-work-contents">
+              <div class="work-img-box">
+                <a href="">
+                  <div class="work-img"></div>
+                  <span>LV Redesign</span>
+                </a>
+              </div>
+              <div class="work-img-box">
+                <a href="">
+                  <div class="work-img"></div>
+                  <span>Business</span>
+                </a>
+              </div>
+              <div class="work-img-box">
+                <a href="">
+                  <div class="work-img"></div>
+                  <span>Apple Clone</span>
+                </a>
+              </div>
+              <div class="work-img-box">
+                <a href="">
+                  <div class="work-img"></div>
+                  <span>Netflix Clone</span>
+                </a>
+              </div>
+              <div class="work-img-box">
+                <a href="">
+                  <div class="work-img"></div>
+                  <span>Lottery Game</span>
+                </a>
+              </div>
+              <div class="work-img-box">
+                <a href="">
+                  <div class="work-img"></div>
+                  <span>Watch</span>
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="footer-container">
+
+        </div>
+      </footer>
     </div>
   </div>
 </body>
