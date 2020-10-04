@@ -15,17 +15,17 @@ $(function () {
     $left += ($cursorX - $left) / 12;
     $top += ($cursorY - $top) / 12;
     $('.custom-cursor').css({ left: $left + 'px', top: $top + 'px' });
-  }, 30);
+  }, 10);
 
   let moreShape = new TimelineMax({ paused: true })
     .to('.custom-cursor', 0.3, { scale: 2 })
     .to('.more-shape', 0.3, { opacity: 1 });
 
   $('.work-img-box').each(function (i, ele) {
-    let workImgHoverTI = new TimelineMax({ paused: true });
-    workImgHoverTI.to($(this).find('img'), 0.3, { opacity: 0.3 })
-      .to($(this).find('span'), 0.3, { opacity: 1, y: '50px' });
-    ele.animation = workImgHoverTI;
+    let workImgHoverTl = new TimelineMax({ paused: true });
+    workImgHoverTl.to($(this), 0.3, { opacity: 0.5 })
+      .to($(this).find('span'), 0.3, { opacity: 1 });
+    ele.animation = workImgHoverTl;
   });
 
   $('.work-img-box').hover(
@@ -39,14 +39,50 @@ $(function () {
     }
   );
 
+  $('.intro h4').html(
+    $('.intro h4').html()
+      .replace(/./g, '<span>$&</span>')
+      .replace(/\s/g, '&nbsp;')
+  );
+
+  anime
+    .timeline({ loop: false })
+    .add({
+      targets: ".intro h4 span",
+      translateX: [-100, 0],
+      translateZ: 0,
+      opacity: [0, 1],
+      easing: "easeOutExpo",
+      duration: 300,
+      delay: function (el, i) {
+        return 200 + 50 * i;
+      }
+    })
+    .add({
+      targets: ".intro h4 span",
+      translateX: [0, 100],
+      opacity: [1, 0],
+      easing: "easeInExpo",
+      duration: 500,
+      delay: function (el, i) {
+        return 200 + 50 * i;
+      }
+    });
+
+
+  TweenMax.to('.intro', 0.6, {
+    delay: 2.5,
+    top: '-100%',
+    ease: Expo.easeInOut
+  });
+
 });
 
-  // function scrollEffect() {
-  //   const mainContainer = document.querySelector('.main-container');
-  //   const pageY = pageYOffset / 6;
-  //   console.log(1);
-  //   mainContainer.style.transform = `translateY(-${pageY}px)`;
-  //   mainContainer.style.transition = `transform .8s ease`;
-  // }
+function scrollEffect() {
+  const mainContainer = document.querySelector('.main-container');
+  const pageY = pageYOffset / 20;
+  mainContainer.style.transform = `translateY(-${pageY}px)`;
+  mainContainer.style.transition = `transform .8s ease`;
+}
 
-  // document.addEventListener('scroll', scrollEffect);
+document.addEventListener('scroll', scrollEffect);
