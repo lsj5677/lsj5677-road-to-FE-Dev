@@ -104,6 +104,7 @@ const navIconBtn = document.querySelector('.nav-icon-btn');
 const contactIconBtn = document.querySelector('.contact-icon-btn');
 const CLOSE = 'close-btn';
 const mainContainer = document.querySelector('.main-container');
+const titleItems = document.querySelectorAll('.title-item');
 
 function navOn() {
   headerNavigation.classList.toggle('nav-on');

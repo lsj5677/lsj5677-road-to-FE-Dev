@@ -45,3 +45,23 @@
     opacity: 1;
   }
 }
+
+@keyframes circularRotate1 {
+  0% {
+    transform: rotate(-45deg);
+  }
+
+  100% {
+    transform: rotate(-405deg);
+  }
+}
+
+@keyframes circularRotate2 {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
