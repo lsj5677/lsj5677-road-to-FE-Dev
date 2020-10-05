@@ -21,23 +21,23 @@ $(function () {
     .to('.custom-cursor', 0.3, { scale: 2 })
     .to('.more-shape', 0.3, { opacity: 1 });
 
-  let headerCursorShape = new TimelineMax({ paused: true })
+  let menuLinkCursorShape = new TimelineMax({ paused: true })
     .to('.custom-cursor', 0.3, { scale: 0.4, backgroundColor: '#fff' });
 
-  $('.btn-icon').each(function (i, ele) {
+  $('.btn-icon, .footer-item').each(function (i, ele) {
     let btnIconTl = new TimelineMax({ paused: true });
     btnIconTl.to($(this), 0.3, { opacity: 0.6 });
     ele.animation = btnIconTl;
   });
 
-  $('.btn-icon').hover(
+  $('.btn-icon, .footer-item').hover(
     function () {
       this.animation.play();
-      headerCursorShape.play();
+      menuLinkCursorShape.play();
     },
     function () {
       this.animation.reverse();
-      headerCursorShape.reverse();
+      menuLinkCursorShape.reverse();
     }
   );
 
@@ -92,7 +92,7 @@ $(function () {
 
   TweenMax.to('.intro', 0.6, {
     delay: 2.5,
-    top: '-100%',
+    top: '-100vh',
     ease: Expo.easeInOut
   });
 
