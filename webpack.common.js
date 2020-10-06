@@ -8,18 +8,18 @@ const srcDir = path.resolve(__dirname, 'app/src');
 
 module.exports = {
   entry: {
-    intro: [
-      path.resolve(srcDir, 'js/intro.js'),
-      path.resolve(srcDir, 'scss/intro.scss')
-    ],
     index: [
       path.resolve(srcDir, 'js/index.js'),
       path.resolve(srcDir, 'scss/index.scss')
     ],
-    about: [
-      path.resolve(srcDir, 'js/about.js'),
-      path.resolve(srcDir, 'scss/about.scss')
-    ]
+    watch: [
+      path.resolve(srcDir, 'js/watch.js'),
+      path.resolve(srcDir, 'scss/watch.scss')
+    ],
+    lottery: [
+      path.resolve(srcDir, 'js/lottery.js'),
+      path.resolve(srcDir, 'scss/lottery.scss')
+    ],
   },
   output: {
     path: distDir,
@@ -79,21 +79,21 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.resolve(srcDir, 'intro.html'),
-      filename: 'intro.html',
-      chunks: ['intro'],
-    }),
-    new HtmlWebpackPlugin({
-      inject: true,
       template: path.resolve(srcDir, 'index.html'),
       filename: 'index.html',
       chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.resolve(srcDir, 'about.html'),
-      filename: 'about.html',
-      chunks: ['about'],
+      template: path.resolve(srcDir, 'watch.html'),
+      filename: 'watch.html',
+      chunks: ['watch'],
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(srcDir, 'lottery.html'),
+      filename: 'lottery.html',
+      chunks: ['lottery'],
     }),
     new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({

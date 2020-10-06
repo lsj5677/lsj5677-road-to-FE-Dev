@@ -105,6 +105,7 @@ const contactIconBtn = document.querySelector('.contact-icon-btn');
 const CLOSE = 'close-btn';
 const mainContainer = document.querySelector('.main-container');
 const titleItems = document.querySelectorAll('.title-item');
+const scrollImgContents = document.querySelectorAll('.work-img-box a');
 
 function navOn() {
   headerNavigation.classList.toggle('nav-on');
@@ -117,11 +118,29 @@ function contactOn() {
 }
 
 function scrollEffect() {
-  const pageY = pageYOffset / 16;
+  const pageY = pageYOffset / 20;
   mainContainer.style.transform = `translateY(-${pageY}px)`;
   mainContainer.style.transition = `transform .8s ease`;
 }
 
+const chkScroll = () => {
+  scrollImgContents.forEach((scrollImgCon) => {
+    const scrollImgBox = scrollImgCon.parentElement;
+    const scrollImg = scrollImgCon.children[0];
+    const scrollAt = window.pageYOffset + window.innerHeight > scrollImgBox.offsetTop;
+
+    if (scrollAt) {
+      const pointY = window.pageYOffset + window.innerHeight - scrollImgBox.offsetTop;
+      const calcPoint = 2 - (pointY + scrollImg.clientHeight / 2) / scrollImg.clientHeight;
+
+      scrollImgCon.style.transform = `translate3d(0, ${calcPoint * 30}px, 0)`;
+    }
+  });
+}
+
+
+
 navIconBtn.addEventListener('click', navOn);
 contactIconBtn.addEventListener('click', contactOn);
 document.addEventListener('scroll', scrollEffect);
+window.addEventListener('scroll', chkScroll);
