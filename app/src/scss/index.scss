@@ -112,6 +112,12 @@ $transition-3s : all .3s ease-in-out;
     @extend %header-icon-btn;
     left: 20px;
 
+    @include for-size(small-width){
+      top: 5%;
+      transform: none;
+      width: 20px;
+    }
+
     .nav-icon-line {
       @extend %header-icon-line;
     }
@@ -124,6 +130,10 @@ $transition-3s : all .3s ease-in-out;
         transform: rotate(45deg);
         transform-origin: 6px;
         background: $white;
+
+        @include for-size(small-width){
+          transform-origin: 1px;
+        }
       }
 
       .nav-icon-line:last-child {
@@ -138,6 +148,10 @@ $transition-3s : all .3s ease-in-out;
     &.nav-on {
       width: 80%;
       transition: $transition-3s;
+
+      @include for-size(small-width){
+        width: 100%;
+      }
     }
 
     .navigation-container {
@@ -182,6 +196,12 @@ $transition-3s : all .3s ease-in-out;
     right: 20px;
     transition: $transition-3s;
 
+    @include for-size(small-width){
+      top: 5%;
+      transform: none;
+      width: 20px;
+    }
+
     .contact-icon-line {
       @extend %header-icon-line;
 
@@ -215,6 +235,10 @@ $transition-3s : all .3s ease-in-out;
 
       @include for-size(large-width){
         width: 50%;
+      }
+
+      @include for-size(small-width){
+        width: 100%;
       }
     }
 
@@ -311,6 +335,14 @@ $transition-3s : all .3s ease-in-out;
         font-size: 1.5em;
         transform: translateX(14%) rotate(90deg);
       }
+
+      @include for-size(small-width){
+        font-size: 1.1em;
+      }
+      
+      @include for-size(xxsmall-width){
+        font-size: 0.8em;
+      }
     }
 
     h3 {
@@ -337,9 +369,12 @@ $transition-3s : all .3s ease-in-out;
         font-size: 2.5em;
       }
 
-      @include for-size(xxsmall-width){
+      @include for-size(small-width){
         top: 55%;
-        left: 50%;
+        font-size: 1.8em;
+      }
+
+      @include for-size(xsmall-width){
         font-size: 1.3em;
       }
     }
@@ -384,6 +419,10 @@ $transition-3s : all .3s ease-in-out;
     margin: 5em auto;
     padding: 5em 0; 
 
+    @include for-size(small-width) {
+      text-align: center;
+    }
+
     .main-about-contents {
       display: flex;
       width: 80%;
@@ -414,6 +453,10 @@ $transition-3s : all .3s ease-in-out;
             font-size: 12px;
             opacity: .7;
             margin-top: 10px;
+
+            @include for-size(xsmall-width){
+              font-size: 10px;
+            }
           }
         }
 
@@ -423,6 +466,16 @@ $transition-3s : all .3s ease-in-out;
           color: $custom-light-gray;
           font-family: $sans-serif;
           margin-top: 20px;
+
+          @include for-size(small-width) {
+            width: 270px;
+            margin: 20px auto 0;
+            text-align: justify;
+          }
+
+          @include for-size(xsmall-width) {
+            width: 260px;
+          }
 
           .keyword {
             font-size: 2em;
@@ -435,19 +488,27 @@ $transition-3s : all .3s ease-in-out;
             }
             margin-right: 5px;
             vertical-align: bottom;
+
+            @include for-size(xsmall-width){
+              font-size: 1.8em;
+            }
           }
         }
       }
 
       .about-circular-contents{
         position: relative;
-        width: 300px;
         min-width: 300px;
         height: 300px;
         border-radius: 50%;
         margin: 0 auto;
 
         @include for-size(medium-width) {
+          min-width: 160px;
+          height: 160px;
+        }
+
+        @include for-size(small-width) {
           display: none;
         }
 
@@ -501,28 +562,41 @@ $transition-3s : all .3s ease-in-out;
       cursor: none;
       @extend %main-contents-animation;
 
+      @include for-size(medium-width) {
+        width: 85%;
+        margin-bottom: 3em;
+      }
       &:nth-child(odd) {
-        .work-img {
-          background: url(../img/fullmoon_yellow.jpg) no-repeat center center;
-          background-size: cover;
-        }
         span {
           right: -10%;
+
+          @include for-size(medium-width) {
+            right: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%,-50%,0);
+          }
         }
       }
 
       &:nth-child(even) {
         margin-top: 5em;
 
-        .work-img {
-          background: url(../img/contents_01.jpg) no-repeat center center;
-          background-size: cover;
+        @include for-size(medium-width) {
+          margin-top: 0;
         }
 
         span {
           left: -10%;
+
+          @include for-size(medium-width) {
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%,-50%,0);
+          }
         }
       }
+      
 
       a {
         width: 100%;
@@ -532,7 +606,38 @@ $transition-3s : all .3s ease-in-out;
 
       .work-img {
         height: 100%;
+
+        &.work-lv {
+          background: url(../img/work-lv.jpg) no-repeat center center;
+          background-size: cover;
+        }
+
+        &.work-business {
+          background: url(../img/work-business.jpg) no-repeat center center;
+          background-size: cover;
+        }
+
+        &.work-apple {
+          background: url(../img/work-apple.jpg) no-repeat center center;
+          background-size: cover;
+        }
+
+        &.work-netflix {
+          background: url(../img/work-netflix.jpg) no-repeat center center;
+          background-size: cover;
+        }
+
+        &.work-lottery {
+          background: url(../img/work-lottery.jpg) no-repeat center center;
+          background-size: cover;
+        }
+
+        &.work-watch {
+          background: url(../img/work-watch.jpg) no-repeat center center;
+          background-size: cover;
+        }
       }
+      
 
       span {
         position: absolute;
@@ -545,10 +650,17 @@ $transition-3s : all .3s ease-in-out;
         padding-bottom: 5px;
         opacity: 0;
         pointer-events: none;
+
+        @include for-size(small-width) {
+          font-size: 2.5em;
+        }
+
+        @include for-size(xsmall-width) {
+          font-size: 1.5em;
+        }
       }
     }
   }
-  
 }
 
 .footer {
@@ -556,7 +668,7 @@ $transition-3s : all .3s ease-in-out;
   .footer-container {
     width: 90%;
     margin: 0 auto;
-    padding: 5em 0;
+    padding: 2em 0;
     display: flex;
     align-self: center;
     justify-content: space-between;
@@ -571,10 +683,15 @@ $transition-3s : all .3s ease-in-out;
       a {
         margin-right: 3em;
         color: $white;
+
+        @include for-size(small-width) {
+          margin-right: 1em;
+        }
       }
     }
 
     p {
+      text-transform: uppercase;
       pointer-events: none;
     }
   }
