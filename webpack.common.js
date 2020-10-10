@@ -44,14 +44,18 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader", {
-          loader: 'postcss-loader',
-          // options: {
-          //   plugins: () => [require('autoprefixer')({
-          //     'browsers': ['> 1%', 'last 2 versions']
-          //   })],
-          // }
-        }]
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              url: true
+            }
+          },
+          'postcss-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.html$/,

@@ -591,40 +591,13 @@ $transition-3s : all .3s ease-in-out;
         height: 110%;
         width: 100%;
 
-        &.work-lv {
-          background: url(../img/work-lv.jpg) no-repeat center center;
-          background-size: cover;
-          background-position: 50%;
-        }
+        
 
-        &.work-business {
-          background: url(../img/work-business.jpg) no-repeat center center;
-          background-size: cover;
-          background-position: 50%;
-        }
-
-        &.work-apple {
-          background: url(../img/work-apple.jpg) no-repeat center center;
-          background-size: cover;
-          background-position: 50%;
-        }
-
-        &.work-netflix {
-          background: url(../img/work-netflix.jpg) no-repeat center center;
-          background-size: cover;
-          background-position: 50%;
-        }
-
-        &.work-lottery {
-          background: url(../img/work-lottery.jpg) no-repeat center center;
-          background-size: cover;
-          background-position: 50%;
-        }
-
-        &.work-watch {
-          background: url(../img/work-watch.jpg) no-repeat center center;
-          background-size: cover;
-          background-position: 50%;
+        @each $item in lv, business, apple, netflix, lottery, watch {
+          &.work-#{$item} {
+            background: url(../img/work-#{$item}.jpg) no-repeat center center;
+            background-size: cover;
+          }
         }
       }
       

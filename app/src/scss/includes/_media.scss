@@ -36,12 +36,18 @@ $breakpoints: (
     @if map-has-key($breakpoints, $breakpoints-size){
         $selector: map-get($breakpoints, $breakpoints-size);
         @if length($selector) == 2 {
-            @media only screen and (nth($selector,1): nth($selector,2)) {
+            @media only screen and (#{nth($selector,1)}: #{nth($selector,2)}) {
                 @content;
             }
+        }
+    } @else if length($selector) == 4 {
+        @media only screen and (#{nth($selector,1)}: #{nth($selector,2)}) and (#{nth($selector,3)}: #{nth($selector,4)}) {
+            @content;
         }
     } @else {
         @error "invalid media-query constraint: args #{length($selector)}.";
     }
 }
+   
+
 
