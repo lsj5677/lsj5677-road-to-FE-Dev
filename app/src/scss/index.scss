@@ -54,6 +54,7 @@ $transition-3s : all .3s ease-in-out;
 
 .wrap {
   background: linear-gradient($black, #222);
+  scroll-behavior: smooth;
 }
 
 .custom-cursor {
@@ -608,7 +609,7 @@ $transition-3s : all .3s ease-in-out;
         left: 50%;
         transform: translateX(-50%);
         display: block;
-        font-size: 3em;
+        font-size: 2em;
         font-family: $serif;
         color: $custom-light-turquoise-blue;
         border-bottom: 3px solid $custom-light-turquoise-blue;
@@ -616,11 +617,7 @@ $transition-3s : all .3s ease-in-out;
         opacity: 0;
         pointer-events: none;
 
-        @include for-size(small-width) {
-          font-size: 2.5em;
-        }
-
-        @include for-size(xsmall-width) {
+        @include for-size(large-width) {
           font-size: 1.5em;
         }
       }

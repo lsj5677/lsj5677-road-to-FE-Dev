@@ -1,22 +1,193 @@
 @import "./includes/_config.scss";
 
+%lottery-btn {
+  border: none;
+  padding: 10px 20px;
+  background: $custom-light-blue;
+  border-color: $custom-medium-blue;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .3s ease;
 
-.wrap {
-  width: 100%;
-  min-height: 100%;
-  background-color: #212121; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .intro-container {
-    font-family: $monospace;
-    font-size: 2em;
-
-    .intro-text {
-      font-weight: 300;
-      color: #fafafa;
-    }
+  &:hover {
+    background: $custom-dark-blue;
   }
 }
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+
+  .lottery-section {
+    width: 60%;
+
+    .lottery-container {
+      position: fixed;
+      width: 60%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: lotteryBgGradient 15s ease infinite;
+    
+      .lottery-contents {
+        width: 90%;
+        height: 80vh;
+        border-radius: 10px;
+        box-shadow: 0px 3px 8px $custom-dark-blue;
+        padding: 3em;
+        box-sizing: border-box;
+        background: $white;
+
+        .lottery-items {
+          width: 100%;
+        }
+      }
+
+      .purchase-contents {
+        .purchase-price-input {
+          background: none;
+          border: none;
+          border-bottom: 1px solid #ddd;
+          width: 40%;
+          transition: .3s all ease;
+          padding-bottom: 8px;
+          font-size: 16px;
+          padding-left: 10px;
+          margin-right: 10px;
+
+          &::placeholder {
+            color: $custom-light-gray;
+          }
+
+          &:focus {
+            outline: none;
+            border: {
+              bottom : 1px solid;
+              color: $custom-light-blue;
+            }
+          }
+        }
+        .purchase-btn{
+          @extend %lottery-btn;
+
+          &.disabled {
+            background: $custom-dark-blue;
+            cursor: default;
+          }
+        }
+      }
+
+      .my-lottery-contents {
+        .my-lottery-title {
+          font-size: 1.7em;
+          font-family: $monospace;
+          letter-spacing: -1px;
+          text-transform: uppercase;
+          color: $custom-light-gray;
+          margin: 1em 0;
+        }
+        .my-lottery-items {
+          display: flex;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+
+          .my-lottery-item{
+            border: {
+              top: 1px solid $custom-light-gray;
+              bottom : 2px solid $custom-light-gray;
+            }
+            margin: 10px 0;
+            padding: 1em 0;
+
+            .lottery-number {
+              display: inline-block;
+              width: 30px;
+              height: 30px;
+              font-size: 14px;
+              border: 1px solid #333;
+              border-radius: 50%;
+              line-height: 2.2;
+              margin: 0 5px;
+
+              @include for-size(xlarge-width){
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+                line-height: 1.6;
+              }
+
+              &.wins {
+                background-color: steelblue;
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+
+      .confirm-contents {
+        .confirm-btn {
+          @extend %lottery-btn;
+
+          &.disabled {
+            background: $custom-dark-blue;
+            cursor: default;
+            display: none;
+          }
+        }
+        .lucky-number-items {
+          .my-lottery-item {
+            text-align: center;
+            margin: 10px 0;
+            padding: 1em;
+
+            .lottery-number {
+              display: inline-block;
+              margin: 0 10px;
+              width: 30px;
+              height: 30px;
+              border: 1px solid #accbee;
+              border-radius: 50%;
+              line-height: 1.8;
+              text-align: center;
+              background: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+              color: $custom-dark-blue;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+
+      .result-contents {
+        .result-content-items {
+          text-align: justify;
+          .wins-text-title{
+            color: $custom-dark-blue;
+            font-size: 13px;
+            border-bottom: 1px solid;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+          }
+          .wins-text {
+            font-size: 13px;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+  }
+
+  .desc-section {
+    width: 40%;
+  }
+}
+
 

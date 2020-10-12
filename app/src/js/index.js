@@ -1,21 +1,44 @@
 import $ from 'jquery';
-import anime from 'animejs/lib/anime.es.js';
-import gsap from "gsap";
 
 $(function () {
 
+  init();
+  showHeader();
+  scrollEffect();
   handleCursor();
+
+  function init() {
+    initElements();
+    introTitleSplit();
+    fadeInOutIntroText();
+    slideUpBackground();
+  }
+
   function handleCursor() {
+    cursorXY();
+    hoverEffect();
+  }
+
+  function showHeader() {
+    slideRightNavigation();
+    slideLeftContact();
+  }
+
+  function scrollEffect() {
+    slowScroll();
+    imgUpDown();
+  }
+
+
+  function cursorXY() {
     let $cursorX = 0;
     let $cursorY = 0;
     let $left = 0;
     let $top = 0;
 
-
     $(document).mousemove(e => {
       $cursorX = e.clientX;
       $cursorY = e.clientY;
-
     });
 
     setInterval(() => {
@@ -24,17 +47,16 @@ $(function () {
       $('.custom-cursor').css({ left: $left + 'px', top: $top + 'px' });
     }, 10);
 
-    let moreCursorShape = new TimelineMax({ paused: true })
-      .to('.custom-cursor', 0.3, { scale: 2 })
-      .to('.more-shape', 0.3, { opacity: 1 });
 
+  }
+
+  function hoverEffect() {
     let menuLinkCursorShape = new TimelineMax({ paused: true })
       .to('.custom-cursor', 0.3, { scale: 0.4, backgroundColor: '#fff' });
 
-
-    $('.btn-icon, .footer-item').each(function (i, ele) {
-      let btnIconTl = new TimelineMax({ paused: true });
-      btnIconTl.to($(this), 0.3, { opacity: 0.6 });
+    $('.btn-icon, .footer-item').each((i, ele) => {
+      let btnIconTl = new TimelineMax({ paused: true })
+        .to($(ele), 0.3, { opacity: 0.6 });
       ele.animation = btnIconTl;
     });
 
@@ -49,11 +71,15 @@ $(function () {
       }
     );
 
-    $('.work-img-box').each(function (i, ele) {
-      let workImgHoverTl = new TimelineMax({ paused: true });
-      workImgHoverTl.to($(this), 0.3, { opacity: 0.5 })
-        .to($(this).find('span'), 0.3, { opacity: 1 });
-      ele.animation = workImgHoverTl;
+    let moreCursorShape = new TimelineMax({ paused: true })
+      .to('.custom-cursor', 0.3, { scale: 2 })
+      .to('.more-shape', 0.3, { opacity: 1 });
+    $('.work-img-box').each((i, workImgBox) => {
+      let workImgHoverTl = new TimelineMax({ paused: true })
+        .to($(workImgBox), 0.3, { opacity: 0.5 })
+        .to($(workImgBox).find('span'), 0.3, { opacity: 1 });
+
+      workImgBox.animation = workImgHoverTl;
     });
 
     $('.work-img-box').hover(
@@ -66,27 +92,20 @@ $(function () {
         moreCursorShape.reverse();
       }
     );
+
   }
 
-  const splitText = (text) => {
+
+
+  function splitText(text) {
     return text.split('').map(char => `<span>${char}</span>`).join('');
   }
 
-  $('.intro h4').html(
-    splitText($('.intro h4').text())
-  );
-
-  // 처음 실행되는 애들
-  init();
-
-  function init() {
-    // 여기서 함수실행
-    initElements();
-    fadeInOutIntroText();
-    slideUpBackground();
+  function introTitleSplit() {
+    $('.intro h4').html(
+      splitText($('.intro h4').text())
+    );
   }
-
-  // footer면 footer section별
 
   function fadeInOutIntroText() {
     anime
@@ -113,8 +132,6 @@ $(function () {
         }
       });
   }
-
-
   function slideUpBackground() {
     TweenMax.to('.intro', 0.6, {
       delay: 2.5,
@@ -123,64 +140,60 @@ $(function () {
     });
   }
 
+  let headerNavigation;
+  let headerContact;
+  let navIconBtn;
+  let contactIconBtn;
+  let mainContainer;
+  let titleItems;
+  let scrollImgContents;
+  let CLOSE = 'close-btn';
 
+  function initElements() {
+    headerNavigation = $('.header-navigation');
+    headerContact = $('.header-contact');
+    navIconBtn = $('.nav-icon-btn');
+    contactIconBtn = $('.contact-icon-btn');
+    mainContainer = $('.main-container');
+    titleItems = $('.title-item');
+    scrollImgContents = $('.work-img-box a');
+  }
+
+
+  function slideRightNavigation() {
+    navIconBtn.click(() => {
+      headerNavigation.toggleClass('nav-on');
+      navIconBtn.toggleClass(CLOSE);
+    });
+  }
+
+  function slideLeftContact() {
+    contactIconBtn.click(() => {
+      headerContact.toggleClass('contact-on');
+      contactIconBtn.toggleClass(CLOSE);
+    });
+  }
+
+  function slowScroll() {
+    $(window).scroll(() => {
+      const pageY = pageYOffset / 20;
+      mainContainer.css({ 'transform': 'translateY(-' + pageY + 'px)', 'transition': 'transform .8s ease' });
+    });
+  }
+
+  function imgUpDown() {
+    $(window).scroll(() => {
+      scrollImgContents.each((i, scrollImgCon) => {
+        const scrollImgBox = $(scrollImgCon).parent();
+        const scrollImg = $(scrollImgCon).children().eq(0);
+        const scrollAt = window.pageYOffset + window.innerHeight > scrollImgBox.offset().top;
+        if (scrollAt) {
+          const pointY = window.pageYOffset + window.innerHeight - scrollImgBox.offset().top;
+          const calcPoint = 2 - (pointY + scrollImg.outerHeight() / 2) / scrollImg.outerHeight();
+
+          $(scrollImgCon).css({ 'transform': 'translate3d(0,' + calcPoint * 20 + 'px, 0)' });
+        }
+      });
+    });
+  }
 });
-
-let headerNavigation;
-let headerContact;
-let navIconBtn;
-let contactIconBtn;
-let mainContainer;
-let titleItems;
-let scrollImgContents;
-let CLOSE = 'close-btn';
-
-initElements();
-
-function initElements() {
-  headerNavigation = $('.header-navigation');
-  headerContact = $('.header-contact');
-  navIconBtn = $('.nav-icon-btn');
-  contactIconBtn = $('.contact-icon-btn');
-  mainContainer = $('.main-container');
-  titleItems = $('.title-item');
-  scrollImgContents = $('.work-img-box a');
-}
-
-function navOn() {
-  headerNavigation.classList.toggle('nav-on');
-  navIconBtn.classList.toggle(CLOSE);
-}
-
-function contactOn() {
-  headerContact.classList.toggle('contact-on');
-  contactIconBtn.classList.toggle(CLOSE);
-}
-
-function scrollEffect() {
-  const pageY = pageYOffset / 20;
-  mainContainer.style.transform = `translateY(-${pageY}px)`;
-  mainContainer.style.transition = `transform .8s ease`;
-}
-
-const chkScroll = () => {
-  scrollImgContents.forEach((scrollImgCon) => {
-    const scrollImgBox = scrollImgCon.parentElement;
-    const scrollImg = scrollImgCon.children[0];
-    const scrollAt = window.pageYOffset + window.innerHeight > scrollImgBox.offsetTop;
-
-    if (scrollAt) {
-      const pointY = window.pageYOffset + window.innerHeight - scrollImgBox.offsetTop;
-      const calcPoint = 2 - (pointY + scrollImg.clientHeight / 2) / scrollImg.clientHeight;
-
-      scrollImgCon.style.transform = `translate3d(0, ${calcPoint * 30}px, 0)`;
-    }
-  });
-}
-
-
-
-navIconBtn.addEventListener('click', navOn);
-contactIconBtn.addEventListener('click', contactOn);
-document.addEventListener('scroll', scrollEffect);
-window.addEventListener('scroll', chkScroll);

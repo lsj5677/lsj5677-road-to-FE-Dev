@@ -4,12 +4,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Lottery</title>
 </head>
 
 <body>
-  <h1>About</h1>
-  <img src="./img/fullmoon_yellow.jpg">
+  <div class="wrap">
+    <div class="container">
+      <section class="lottery-section">
+        <div class="lottery-container">
+          <div class="lottery-contents">
+            <div class="purchase-contents lottery-items">
+              <input type="text" pattern="\d*" placeholder="금액을 입력하세요." class="purchase-price-input">
+              <button class="purchase-btn lottery-btn">구매하기</button>
+            </div>
+
+            <div class="my-lottery-contents lottery-items">
+              <h3 class="my-lottery-title">My Lottery Numbers</h3>
+              <ul class="my-lottery-items">
+                <!--lottery item-->
+              </ul>
+            </div>
+
+            <div class="confirm-contents lottery-items">
+              <button class="confirm-btn lottery-btn">당첨번호 및 당첨확인</button>
+              <ul class="lucky-number-items">
+                <!-- lucky number item -->
+              </ul>
+            </div>
+
+            <div class="result-contents lottery-items">
+              <ul class="result-content-items">
+                <!-- result content -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="desc-section">
+        <div class="desc-container">
+          <h2 class="desc-title">Lottery Games</h2>
+        </div>
+      </section>
+    </div>
+  </div>
 </body>
 
 </html>
