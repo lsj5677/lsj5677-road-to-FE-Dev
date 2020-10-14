@@ -7,6 +7,8 @@ let resultContentItemsEl;
 let resetBtn;
 let lotteryCon;
 let myLotteryItemEl
+let moreNavBtnEl;
+let moreNavEl;
 
 const inputMaxLen = 5;
 
@@ -23,6 +25,8 @@ function initEl() {
   resetBtn = document.querySelector('.reset-btn');
   lotteryCon = document.querySelector('.lottery-contents');
   myLotteryItemEl = document.querySelectorAll('.my-lottery-item');
+  moreNavBtnEl = document.querySelector('.more-nav-btn');
+  moreNavEl = document.querySelector('.more-nav');
 }
 
 function initEvent() {
@@ -31,9 +35,9 @@ function initEvent() {
   createLotteryNumbers();
   createLotteries();
   confirmLotteries();
-  // priceInputEl.onkeyup = numberMaxLenChk(priceInputEl);
-  priceInputEl.addEventListener('keyup', (numberMaxLenChk(priceInputEl)));
+  // priceInputEl.addEventListener('keyup', (numberChk(priceInputEl)));
   // reset();
+  moreNavBtnEl.addEventListener('click', moreNavShow);
 }
 
 const winningAmount = {
@@ -49,7 +53,15 @@ const lotteryMaxLen = 6;
 const generateRandomNumber = (maxLen) => Math.floor(Math.random() * maxLen);
 let myLotteries;
 
-function numberMaxLenChk(el) {
+function numberChk(el) {
+  const numberRegExp = /^[0-9]*$/g;
+
+  if (numberRegExp.test(el.value)) {
+    alert('숫자만 입력해주세요');
+    return false;
+  }
+
+
   if (el.value.length > el.maxLength) {
     el.value = el.value.slice(0, el.maxLength);
     alert(`최대 ${el.maxLength}자리 까지 가능합니다.`);
@@ -160,4 +172,9 @@ function reset() {
     resultContentItemsEl.toggle();
     luckyNumberItemsEl.toggle();
   });
+}
+
+function moreNavShow() {
+  moreNavBtnEl.classList.toggle('more-nav-on');
+  moreNavEl.classList.toggle('more-nav-show');
 }
