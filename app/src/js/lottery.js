@@ -1,3 +1,5 @@
+import './more_nav.js'
+
 let priceInputEl;
 let myLotteryItemsEl;
 let luckyNumberItemsEl;
@@ -7,8 +9,6 @@ let resultContentItemsEl;
 let resetBtn;
 let lotteryCon;
 let myLotteryItemEl
-let moreNavBtnEl;
-let moreNavEl;
 
 const inputMaxLen = 5;
 
@@ -25,8 +25,6 @@ function initEl() {
   resetBtn = document.querySelector('.reset-btn');
   lotteryCon = document.querySelector('.lottery-contents');
   myLotteryItemEl = document.querySelectorAll('.my-lottery-item');
-  moreNavBtnEl = document.querySelector('.more-nav-btn');
-  moreNavEl = document.querySelector('.more-nav');
 }
 
 function initEvent() {
@@ -37,7 +35,6 @@ function initEvent() {
   confirmLotteries();
   // priceInputEl.addEventListener('keyup', (numberChk(priceInputEl)));
   // reset();
-  moreNavBtnEl.addEventListener('click', moreNavShow);
 }
 
 const winningAmount = {
@@ -172,9 +169,4 @@ function reset() {
     resultContentItemsEl.toggle();
     luckyNumberItemsEl.toggle();
   });
-}
-
-function moreNavShow() {
-  moreNavBtnEl.classList.toggle('more-nav-on');
-  moreNavEl.classList.toggle('more-nav-show');
 }

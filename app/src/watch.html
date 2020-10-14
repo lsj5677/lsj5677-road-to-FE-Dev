@@ -4,13 +4,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>intro</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Clock</title>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
 <body>
   <div class="wrap">
-    <div class="intro-container">
-      <div class="intro-text"></div>
+    <div class="container">
+      <section class="clock-section">
+        <div class="clock-container">
+          <div class="clock-contents">
+            <div class="clock-hours">
+              <!-- auto generated hour number elements -->
+            </div>
+            <div class="clock-seconds">
+              <!-- auto generated second line elements -->
+            </div>
+            <div class="clock-hand circle"></div>
+            <div class="clock-hand hours-hand"></div>
+            <div class="clock-hand min-hand"></div>
+            <div class="clock-hand sec-hand"></div>
+          </div>
+        </div>
+      </section>
+      <section class="desc-section">
+        <div class="desc-container">
+          <div class="desc-title">
+            <h2>
+              Clock
+            </h2>
+          </div>
+
+          <article>
+            <h4>1. 조건</h4>
+            <p>
+              현재 시간을 받아오며, 시침, 분침, 초침이 있어야 하며 시간을 나타내는 숫자와 각 분/초를 가르키는 라인이 있어야한다.
+            </p>
+          </article>
+
+          <article>
+            <h4>2. 설계</h4>
+            <p>
+              시간을 가르키는 <span class="point-text">시침</span><br>
+              분을 가르키는 <span class="point-text">분침</span><br>
+              초를 가르키는 <span class="point-text">초침</span><br>
+              각각 시/분/초침이 360도를 돌아야한다.<br>
+              <span class="point-text">규칙이 있는 Elements들은 js를 통해서 구현</span>해보도록 한다.
+            </p>
+          </article>
+
+          <article>
+            <h4>3. 구현</h4>
+            <p>
+              시계상 보이는 시간의 max값은 12 그리고 분,초는 60이며 각각 가르키는 바늘이 360도를 돌아야한다.
+              해당사항을 변수에 초기화를 시켜준 후 구현한다.
+            </p>
+            <p>
+              <span class="fn-text">clockFn()</span>에서 Date객체를 사용해서 실시간을 받아오며,
+              해당 함수안에서 시,분,초침의 각도를 계산한다. <span class="point-text">(현재 / 각각의 max값 * 360도)</span>
+            </p>
+            <p>
+              또한 <span class="fn-text">createNumbers() createSecLines()</span> 각각 함수에서는
+              일정한 규칙을 가지고 있는 Element들을 생성해준다.
+            </p>
+            <p>
+              <span class="fn-text">createNumbers()</span>의 경우 1~12까지의 숫자(현시계의 시간 max값 = 12)를 for문을 사용하여
+              12개의 Elements를 만듦과 동시에 rotate를 사용하여 각각 배치한다.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <div class="more-navigation">
+        <button class="more-nav-btn">
+          <i class='fas fa-plus-circle'></i>
+        </button>
+
+        <nav class="more-nav">
+          <ul class="more-nav-items">
+            <li class="more-nav-item">
+              <a href="./index.html">Home</a>
+            </li>
+            <li class="more-nav-item">
+              <a href="">LV</a>
+            </li>
+            <li class="more-nav-item">
+              <a href="">Business</a>
+            </li>
+            <li class="more-nav-item">
+              <a href="./lottery.html">lottery games</a>
+            </li>
+            <li class="more-nav-item">
+              <a href="./watch.html">watch</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </div>
 </body>
