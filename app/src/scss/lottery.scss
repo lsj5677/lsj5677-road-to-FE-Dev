@@ -10,6 +10,10 @@
   cursor: pointer;
   transition: background .3s ease;
 
+  @include for-size(large-width) {
+    width: 100%;
+  }
+
   &:hover {
     background: $custom-dark-blue;
   }
@@ -21,9 +25,22 @@
   height: 100%;
   display: flex;
   box-sizing: border-box;
+  
+  @include for-size(medium-width) {
+    flex-wrap: wrap;
+  }
 
   .lottery-section {
     width: 60%;
+
+    @include for-size(large-width) {
+      width: 50%;
+    }
+
+    @include for-size(medium-width) {
+      width: 100%;
+      order: 2;
+    }
 
     .lottery-container {
       position: fixed;
@@ -36,6 +53,15 @@
       background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
       background-size: 400% 400%;
       animation: lotteryBgGradient 15s ease infinite;
+
+      @include for-size(large-width) {
+        width: 50%;
+      }
+
+      @include for-size(medium-width) {
+        position: relative;
+        width: 100%;
+      }
     
       .lottery-contents {
         width: 90%;
@@ -44,10 +70,25 @@
         box-shadow: 0px 3px 8px $custom-dark-blue;
         padding: 3em;
         box-sizing: border-box;
-        background: $white;
+        background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        overflow-y: auto;
 
         .lottery-items {
           width: 100%;
+        
+        }
+
+        &::-webkit-scrollbar {
+          width: 5px;
+          background: $custom-light-gray;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+          background: $custom-turquoise-blue;
+          border-radius: 8px;
+        }
+        &::-webkit-scrollbar-track {
+          background: $custom-light-gray;
         }
       }
 
@@ -62,6 +103,14 @@
           font-size: 16px;
           padding-left: 10px;
           margin-right: 10px;
+          box-sizing: border-box;
+          
+
+          @include for-size(large-width) {
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 13px;
+          }
 
           &::placeholder {
             color: $custom-light-gray;
@@ -93,6 +142,10 @@
           text-transform: uppercase;
           color: $custom-light-gray;
           margin: 1em 0;
+
+          @include for-size(large-width) {
+            font-size: 1.3em;
+          }
         }
         .my-lottery-items {
           display: flex;
@@ -149,6 +202,10 @@
             margin: 10px 0;
             padding: 1em;
 
+            @include for-size(large-width) {
+              padding: 1em 0;
+            }
+
             .lottery-number {
               display: inline-block;
               margin: 0 10px;
@@ -161,6 +218,10 @@
               background: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
               color: $custom-dark-blue;
               font-weight: 600;
+
+              @include for-size(large-width) {
+                margin: 0 4px;
+              }
             }
           }
         }
@@ -187,6 +248,79 @@
 
   .desc-section {
     width: 40%;
+    
+    @include for-size(large-width) {
+      width: 50%;
+    }
+
+    @include for-size(medium-width) {
+      width: 100%;
+      order: 1;
+    }
+
+    .desc-title {
+      background: $custom-light-blue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3em;
+      box-sizing: border-box;
+
+      @include for-size(medium-width) {
+        padding: 2em;
+      }
+      
+      h2 {
+        color: rgba(255,255,255,0.4);
+        font-size: 4em;
+        font-family: $serif;
+
+        @include for-size(xlarge-width){
+          font-size: 3em;
+        }
+      }
+    }
+
+    article {
+      padding: 3em;
+      color: $black;
+
+      @include for-size(medium-width) {
+        padding: 2em;
+      }
+
+      h4 {
+        font-size: 1.2em;
+        font-family: $sans-serif;
+        border-bottom: 2px solid $custom-light-blue;
+        padding-bottom: 10px;
+
+        @include for-size(medium-width) {
+          font-size: 1em;
+        }
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-top: 1em;
+
+        @include for-size(medium-width) {
+          font-size: 13px;
+        }
+
+        .point-text {
+          color: $custom-dark-blue;
+          font-weight: 600;
+          border-bottom: 1px solid $custom-dark-blue;
+        }
+
+        .fn-text {
+          color: $custom-medium-blue;
+          font-weight: 600;
+        }
+      }
+    }
   }
 }
 

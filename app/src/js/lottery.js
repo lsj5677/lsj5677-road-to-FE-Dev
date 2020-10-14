@@ -4,6 +4,11 @@ let luckyNumberItemsEl;
 let purchaseBtnEl;
 let confirmBtnEl;
 let resultContentItemsEl;
+let resetBtn;
+let lotteryCon;
+let myLotteryItemEl
+
+const inputMaxLen = 5;
 
 initEl();
 initEvent();
@@ -15,6 +20,9 @@ function initEl() {
   purchaseBtnEl = document.querySelector('.purchase-btn');
   confirmBtnEl = document.querySelector('.confirm-btn');
   resultContentItemsEl = document.querySelector('.result-content-items');
+  resetBtn = document.querySelector('.reset-btn');
+  lotteryCon = document.querySelector('.lottery-contents');
+  myLotteryItemEl = document.querySelectorAll('.my-lottery-item');
 }
 
 function initEvent() {
@@ -23,6 +31,9 @@ function initEvent() {
   createLotteryNumbers();
   createLotteries();
   confirmLotteries();
+  // priceInputEl.onkeyup = numberMaxLenChk(priceInputEl);
+  priceInputEl.addEventListener('keyup', (numberMaxLenChk(priceInputEl)));
+  // reset();
 }
 
 const winningAmount = {
@@ -37,6 +48,14 @@ const lotteryNumberLimit = 45;
 const lotteryMaxLen = 6;
 const generateRandomNumber = (maxLen) => Math.floor(Math.random() * maxLen);
 let myLotteries;
+
+function numberMaxLenChk(el) {
+  if (el.value.length > el.maxLength) {
+    el.value = el.value.slice(0, el.maxLength);
+    alert(`최대 ${el.maxLength}자리 까지 가능합니다.`);
+    return false;
+  }
+}
 
 function purchaseLotteries() {
   purchaseBtnEl.addEventListener('click', () => {
@@ -128,4 +147,17 @@ const displayResult = (result) => {
   <li class="wins-text">5개 일치 (${winningAmount.win5}원) - ${result[5]}개</li>
   <li class="wins-text">6개 일치 (${winningAmount.win6}원) - ${result[6]}개</li>
 `;
+}
+
+function reset() {
+  resetBtn.addEventListener('click', () => {
+    priceInputEl.value = '';
+    purchaseBtnEl.disabled = false;
+    purchaseBtnEl.classList.remove('disabled');
+    confirmBtnEl.disabled = false;
+    confirmBtnEl.classList.remove('disabled');
+    myLotteryItemEl.forEach((item) => item.remove());
+    resultContentItemsEl.toggle();
+    luckyNumberItemsEl.toggle();
+  });
 }

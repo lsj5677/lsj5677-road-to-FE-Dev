@@ -14,8 +14,13 @@
       <section class="lottery-section">
         <div class="lottery-container">
           <div class="lottery-contents">
+            <!-- <button type="reset" class="reset-btn">
+              Reset
+            </button> -->
+
             <div class="purchase-contents lottery-items">
-              <input type="text" pattern="\d*" placeholder="금액을 입력하세요." class="purchase-price-input">
+              <input type="number" min="1000" max="90000" step="1000" maxlength="5" pattern="\d*"
+                placeholder="금액을 입력하세요." class="purchase-price-input">
               <button class="purchase-btn lottery-btn">구매하기</button>
             </div>
 
@@ -43,9 +48,70 @@
       </section>
       <section class="desc-section">
         <div class="desc-container">
-          <h2 class="desc-title">Lottery Games</h2>
+          <div class="desc-title">
+            <h2>
+              Lottery Games
+            </h2>
+          </div>
+
+          <article>
+            <h4>1. 조건</h4>
+            <p>
+              Lottery는 1장당 1,000원이며 45개의 숫자 중 랜덤으로 6개의 숫자가 뽑힌다.
+              당첨확인 버튼을 누르면 당첨 번호 6개와 동시에 내가 구매한 Lottery와 일치한 숫자를 보여줌과 동시에
+              당첨 통계를 알 수 있다.
+            </p>
+          </article>
+          <article>
+            <h4>2. 설계</h4>
+            <p>
+              필요한 부분으로는 내가 입력한 값만큼 구입할 수 있는 <span class="point-text">구매</span><br>
+              구매함과 동시에 나오는 <span class="point-text">랜덤 번호</span><br>
+              당첨버튼을 눌렀을 때 나오는 <span class="point-text">당첨 번호</span><br>
+              내가 구매한 것과 당첨번호의 <span class="point-text">비교</span><br>
+              비교한 후 <span class="point-text">당첨 통계</span>
+            </p>
+          </article>
+          <article>
+            <h4>3. 구현</h4>
+            <p>
+              <span class="fn-text">purchaseLotteries()</span>는 값을 입력 후 구매버튼을 눌렀을 때
+              입력한 값만큼 구매가 되며 번호가 생성된다. 최초 구매를 하고 나면 버튼은 비활성화가 되며 더 이상 구매가 이루어지지 않는다.
+            </p>
+            <p>
+              <span class="fn-text">confirmLotteries()</span>의 경우, 당첨확인 버튼을 누름과 동시에 비교를 하며 버튼은 사라진다.
+              <span class="fn-text">compareLotteries</span> 해당 부분에서 내가 구매한 값과 당첨 값이 비교가 되며,
+              <span class="point-text">Array.from</span>을 사용해 0개 일치 ~ 6개 일치까지 7개의 객체가 담긴 유사 배열 객체를 만들고
+              일치하는 번호에는 wins라는 class를 붙여 스타일을 따로 준다. 총 맞은 갯수에 따라 배열에 담기고 등수가 출력된다.
+            </p>
+          </article>
         </div>
       </section>
+    </div>
+    <div class="more-navigation">
+      <button class="more-btn">
+        more
+      </button>
+
+      <nav class="more-nav">
+        <ul>
+          <li>
+            <a href="">Home</a>
+          </li>
+          <li>
+            <a href="">LV</a>
+          </li>
+          <li>
+            <a href="">Business</a>
+          </li>
+          <li>
+            <a href="">lottery games</a>
+          </li>
+          <li>
+            <a href="">watch</a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </body>
