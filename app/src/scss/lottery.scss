@@ -1,13 +1,18 @@
 @import "./includes/_config.scss";
 
-%lottery-btn {
+%btn-reset {
+  background: none;
+  outline: none;
   border: none;
+  cursor: pointer;
+}
+
+%lottery-btn {
   padding: 10px 20px;
   background: $custom-light-blue;
   border-color: $custom-medium-blue;
   border-radius: 3px;
   color: #fff;
-  cursor: pointer;
   transition: background .3s ease;
 
   @include for-size(large-width) {
@@ -64,6 +69,7 @@
       }
     
       .lottery-contents {
+        position: relative;
         width: 90%;
         height: 80vh;
         border-radius: 10px;
@@ -73,9 +79,25 @@
         background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
         overflow-y: auto;
 
+        .reset-btn {
+          width: 50px;
+          height: 50px;
+          float: right;
+          background: $custom-dark-blue;
+          color: $white;
+          transition: all .3s ease;
+          border-radius: 50%;
+          @extend %btn-reset;
+
+          &:hover {
+            background: $custom-gray;
+            transition: all .3s ease;
+          }
+        }
+
         .lottery-items {
           width: 100%;
-        
+          clear: both;
         }
 
         &::-webkit-scrollbar {
@@ -125,6 +147,7 @@
           }
         }
         .purchase-btn{
+          @extend %btn-reset;
           @extend %lottery-btn;
 
           &.disabled {
@@ -188,6 +211,7 @@
 
       .confirm-contents {
         .confirm-btn {
+          @extend %btn-reset;
           @extend %lottery-btn;
 
           &.disabled {

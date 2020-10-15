@@ -1,4 +1,4 @@
-import './more_nav.js'
+import './common';
 
 let clockHoursEl;
 let clockSecondsEl;
