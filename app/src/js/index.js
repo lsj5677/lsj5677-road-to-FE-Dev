@@ -1,6 +1,4 @@
 import $ from 'jquery';
-// import 'gsap';
-// import 'animejs';
 
 $(function () {
 
