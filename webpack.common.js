@@ -12,13 +12,21 @@ module.exports = {
       path.resolve(srcDir, 'js/index.js'),
       path.resolve(srcDir, 'scss/index.scss')
     ],
-    watch: [
-      path.resolve(srcDir, 'js/watch.js'),
-      path.resolve(srcDir, 'scss/watch.scss')
+    clock: [
+      path.resolve(srcDir, 'js/clock.js'),
+      path.resolve(srcDir, 'scss/clock.scss')
     ],
     lottery: [
       path.resolve(srcDir, 'js/lottery.js'),
       path.resolve(srcDir, 'scss/lottery.scss')
+    ],
+    lv: [
+      path.resolve(srcDir, 'js/lv.js'),
+      path.resolve(srcDir, 'scss/lv.scss')
+    ],
+    landing: [
+      path.resolve(srcDir, 'js/landing.js'),
+      path.resolve(srcDir, 'scss/landing.scss')
     ],
   },
   output: {
@@ -89,15 +97,27 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.resolve(srcDir, 'watch.html'),
-      filename: 'watch.html',
-      chunks: ['watch'],
+      template: path.resolve(srcDir, 'clock.html'),
+      filename: 'clock.html',
+      chunks: ['clock'],
     }),
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(srcDir, 'lottery.html'),
       filename: 'lottery.html',
       chunks: ['lottery'],
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(srcDir, 'lv.html'),
+      filename: 'lv.html',
+      chunks: ['lv'],
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(srcDir, 'landing.html'),
+      filename: 'landing.html',
+      chunks: ['landing'],
     }),
     new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
