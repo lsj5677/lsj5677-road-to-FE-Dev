@@ -21,7 +21,7 @@ $transition-3s : all .3s ease-in-out;
   width: 100%;
   height: 2px;
   border-radius: 3px;
-  background: $custom-turquoise-blue;
+  background: $black;
   transition: $transition-3s;
 }
 
@@ -61,7 +61,7 @@ $transition-3s : all .3s ease-in-out;
   position: fixed;
   width: 50px;
   height: 50px;
-  border: 1px solid $custom-light-gray;
+  border: 1px solid $black;
   border-radius: 50%;
   margin: {
     top: -30px;
@@ -308,41 +308,134 @@ $transition-3s : all .3s ease-in-out;
   margin: 0 auto;
 
   .main-title-contents {
+    position: relative;
+    width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
+
+    @include for-size(medium-width) {
+      align-items: baseline;
+    }
 
     .title-text {
+      position: relative;
       transform: rotate(-90deg);
+      transform-origin: 30% bottom;
       text-transform: uppercase;
       font-family: $sans-serif;
       font-weight: 700;
 
+      @include for-size(medium-width) {
+        transform: none;
+        top: 17%;
+      }
+
+      @include for-size(small-width) {
+        top: 15%;
+      }
+
       .sub-title {
         font-size: 6em;
         color: #f3d971;
+
+        @include for-size(medium-width) {
+          font-size: 7em;
+        }
+
+        @include for-size(small-width) {
+          font-size: 4em;
+        }
       }
 
       .main-title {
         position: absolute;
         top: 30%;
         font-size: 3em;
+
+        @include for-size(medium-width) {
+          top: 38%;
+          font-size: 4em;
+        }
+
+        @include for-size(small-width) {
+          font-size: 2em;
+        }
       }
 
       p {
         font-size: 1.5em;
         margin-top: 1em;
+
+        @include for-size(small-width) {
+          font-size: 1em;
+        }
+      }
+    }
+
+    .title-image {
+      max-width: 130px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-20%, -50%, 0);
+
+      @include for-size(medium-width) {
+        transform: translate3d(-20%, -25%, 0);
+      }
+
+      @include for-size(small-width) {
+        max-width: 100px;
+        transform: translate3d(-20%, -30%, 0);
       }
     }
 
     .title-keyword {
+      position: relative;
       text-transform: uppercase;
       font-family: $sans-serif;
       font-weight: 700;
 
+      @include for-size(medium-width) {
+        top: 70%;
+        right: 8%;
+      }
+
+      @include for-size(small-width) {
+        position: absolute;
+        top: 73%;
+        right: 15%;
+      }
+
       .keyword {
-        transform: rotate(-90deg);
+        position: absolute;
+
+        @include for-size(small-width) {
+          top: auto;
+        }
+
+        li {
+          line-height: 1.2;
+          font-size: 1.5em;
+
+          @include for-size(small-width) {
+            font-size: 1em;
+          }
+        }
+      }
+
+      span {
+        opacity: 0.3;
+        display: inline-block;
+        transform: rotate(90deg);
+        transform-origin: -13px;
+
+        @include for-size(small-width) {
+          font-size: 0.8em;
+          transform-origin: -8px;
+        }
       }
     }
   }
@@ -356,120 +449,76 @@ $transition-3s : all .3s ease-in-out;
     }
 
     .main-about-contents {
-      display: flex;
       width: 80%;
       margin: 0 auto;
-      align-items: center;
       pointer-events: none;
+      text-align: center;
       @extend %main-contents-animation;
 
-      @include for-size(medium-width) {
-        flex-wrap: wrap;
-      }
-
-      .about-text-contents {
-        flex: auto;
-
+     
         .about-title {
-          font-size: 3em;
-          font-family: $serif;
-          color: $custom-turquoise-blue;
+          position: relative;
+          font-size: 5em;
+          font-family: $sans-serif;
+          color: $black;
           line-height: 1;
+          font-weight: 700;
+          text-align: center;
+          text-transform: uppercase;
 
           @include for-size(large-width){
-            font-size: 2em;
+            font-size: 4em;
+          }
+          @include for-size(medium-width){
+            font-size: 3em;
           }
 
           span {
-            display: block;
-            font-size: 12px;
-            opacity: .7;
-            margin-top: 10px;
-
-            @include for-size(xsmall-width){
-              font-size: 10px;
-            }
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 100%;
+            color: #f3d971;
+            z-index: -1;
           }
         }
 
         .about-desc {
-          font-size: 13px;
+          font-size: 0.8em;
           line-height: 1.8;
-          color: $custom-light-gray;
+          color: $custom-bold-gray;
           font-family: $sans-serif;
           margin-top: 20px;
+          text-align: center;
 
-          @include for-size(small-width) {
-            width: 270px;
-            margin: 20px auto 0;
-            text-align: justify;
+          @include for-size(medium-width){
+            font-size: 0.5em;
           }
 
-          @include for-size(xsmall-width) {
-            width: 260px;
-          }
+          .desc-title {
+            display: block;
+            font-size: 13px;
 
-          .keyword {
-            font-size: 2em;
-            color: $custom-light-turquoise-blue;
-            font-family: $monospace;
-            border-bottom: 2px solid #d7e9ee;
-            padding: {
-              bottom: 3px;
-              right: 8px;
+            @include for-size(medium-width){
+              font-size: 11px;
             }
-            margin-right: 5px;
-            vertical-align: bottom;
+          }
+
+          .about-keyword {
+            font-size: 1.5em;
+            color: $black;
+            font-family: $sans-serif;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding: {
+              left: 6px;
+              right: 3px;
+            }
 
             @include for-size(xsmall-width){
               font-size: 1.8em;
             }
           }
-        }
-      }
-
-      .about-circular-contents{
-        position: relative;
-        min-width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        margin: 0 auto;
-
-        @include for-size(medium-width) {
-          min-width: 160px;
-          height: 160px;
-        }
-
-        @include for-size(small-width) {
-          display: none;
-        }
-
-        .circular {
-          position: absolute;
-          top: 0;
-          border-radius: 50%;
-          border-style: solid;
-          opacity: .3;
-          z-index: 0;
-        }
-
-        .circular-outline-thin {
-          width: 100%;
-          height: 100%;
-          border-width: 1px;
-          border-color: $custom-gray;
-          animation: circularRotate1 15s ease-in-out infinite;
-        }
-
-        .circular-outline-thick {
-          width: 99.5%;
-          height: 99.5%;
-          border: {          
-            width: 2px;
-            color: $custom-turquoise-blue transparent;
-          }
-          transform: rotate(-45deg);
-          animation: circularRotate2 15s ease-in-out infinite;
         }
       }
     }
@@ -492,6 +541,7 @@ $transition-3s : all .3s ease-in-out;
       justify-content: center;
       cursor: none;
       overflow: hidden;
+      border-bottom: 5px solid #f3d971;
       @extend %main-contents-animation;
 
       @include for-size(medium-width) {
@@ -554,10 +604,11 @@ $transition-3s : all .3s ease-in-out;
       }
     }
   }
-}
+
 
 .footer {
-  border-top: 1px dotted rgba(255,255,255,0.5);
+  background: #f3d971;
+
   .footer-container {
     width: 90%;
     margin: 0 auto;
@@ -566,16 +617,25 @@ $transition-3s : all .3s ease-in-out;
     align-self: center;
     justify-content: space-between;
     font-size: 13px;
-    color: $white;
-    opacity: 0.5;
+    color: $black;
+
+    @include for-size(small-width){
+      flex-wrap: wrap;
+      justify-content: center;
+      line-height: 1.5;
+    }
 
     .footer-items {
       display: flex;
       justify-content: space-between;
 
+      @include for-size(small-width){
+        width: 80%;
+      }
+
       a {
         margin-right: 3em;
-        color: $white;
+        color: $black;
 
         @include for-size(small-width) {
           margin-right: 1em;
