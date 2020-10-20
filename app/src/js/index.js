@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import skrollr from 'skrollr';
 import gsap from 'gsap';
 import anime from 'animejs';
 
@@ -14,7 +15,6 @@ init();
 showHeader();
 scrollEffect();
 handleCursor();
-
 function init() {
   initElements();
   fadeInOutText('.intro h4', '.intro h4 span');
@@ -41,6 +41,7 @@ function showHeader() {
 }
 
 function scrollEffect() {
+  scrollChangeBgColor();
   scrollSlowly();
   upDownImg();
 }
@@ -90,7 +91,7 @@ function hoverEffect() {
     .to('.more-shape', 0.3, { opacity: 1 });
   $('.work-img-box').each((i, workImgBox) => {
     let workImgHoverTl = new TimelineMax({ paused: true })
-      .to($(workImgBox), 0.3, { opacity: 0.5 })
+      .to($(workImgBox), 0.3, { opacity: 1 })
       .to($(workImgBox).find('span'), 0.3, { opacity: 1 });
 
     workImgBox.animation = workImgHoverTl;
@@ -166,6 +167,12 @@ function slideLeftContact() {
   contactIconBtn.click(() => {
     headerContact.toggleClass('contact-on');
     contactIconBtn.toggleClass(CLOSE);
+  });
+}
+
+function scrollChangeBgColor() {
+  skrollr.init({
+    forceHeight: false
   });
 }
 
