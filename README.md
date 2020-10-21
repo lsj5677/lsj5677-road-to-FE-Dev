@@ -12,14 +12,14 @@
 
 
 
-### Design
+#### :memo: Design
 
 ---
 
 소통과 창의성이란 뜻을 담고있는 파란색과 성장을 뜻하는 초록색의 배경색 그리고 포인트 컬러로 호기심을 뜻하는 노란색을 사용했습니다.<br>
 또한 일러스트를 사용함으로써 밝고 펑키한 느낌을 주었습니다.
 
-### Effect
+#### :memo: Effect
 
 ***
 
@@ -69,21 +69,21 @@ Image Contents들 경우 이미지는 background로 고정되어 있고 가장 �
 - `npm run build` | 배포할 경우
 
 ## # Function
-##### # 마우스커서 핸들링을 위한 함수
+##### :memo: 마우스커서 핸들링을 위한 함수
 ```javascript
 function handleCursor() {
   cursorXY();
   hoverEffect();
 }
 ```
-##### # menu 및 contact 버튼을 눌렀을 때 실행되는 함수
+##### :memo: menu 및 contact 버튼을 눌렀을 때 실행되는 함수
 ```javascript
 function showHeader() {
   slideRightNavigation();
   slideLeftContact();
 }
 ```
-##### # 스크롤 시 실행되는 이벤트들을 모아놓은 함수
+##### :memo: 스크롤 시 실행되는 이벤트들을 모아놓은 함수
 ```javascript
 function scrollEffect() {
   scrollChangeBgColor();
