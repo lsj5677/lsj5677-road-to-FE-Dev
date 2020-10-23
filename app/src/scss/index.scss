@@ -70,6 +70,10 @@ $transition-3s : all .3s ease-in-out;
   pointer-events: none;
   z-index: 5;
 
+  @include for-size(mideum-width) {
+    display: none;
+  }
+
   .more-shape {
     position: absolute;
     top: 50%;
