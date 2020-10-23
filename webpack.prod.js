@@ -24,19 +24,11 @@ module.exports = merge(phase1, {
   optimization: {
     usedExports: true,
     splitChunks: {
-      chunks: 'async',
-      minSize: 0,
       cacheGroups: {
-        default: false,
-        common: {
-          chunks(chunk) {
-            return chunk.name !== 'polyfill' && chunk.name !== 'unified';
-          },
-          test: (m, c, entry) => m.constructor.name !== 'CssModule',
+        commons: {
+          chunks: 'all',
+          test: /[\\/]node_modules[\\/]/,
           name: 'common',
-          minChunks: 3,
-          priority: 20,
-          enforce: true,
         }
       }
     },
