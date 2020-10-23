@@ -52,9 +52,19 @@ $transition-3s : all .3s ease-in-out;
   -o-animation-delay: 3s;
 }
 
+body {
+  transition: background-color 1s ease;
+}
+
 .wrap {
-  background: #d8dbe4;
   scroll-behavior: smooth;
+}
+
+.bg-color-green {
+  background: rgb(0,201,147);
+}
+.bg-color-blue {
+  background: rgb(74,173,255);
 }
 
 .custom-cursor {
@@ -69,6 +79,10 @@ $transition-3s : all .3s ease-in-out;
   }
   pointer-events: none;
   z-index: 5;
+
+  @include for-size(medium-width) {
+    display: none;
+  }
 
   .more-shape {
     position: absolute;
@@ -130,16 +144,11 @@ $transition-3s : all .3s ease-in-out;
 
       .nav-icon-line {
         transform: rotate(45deg);
-        transform-origin: 6px;
         background: $white;
-
-        @include for-size(small-width){
-          transform-origin: 1px;
-        }
       }
 
       .nav-icon-line:last-child {
-        transform: rotate(-45deg);
+        transform: rotate(-45deg) translate3d(8px,-10px,0);
       }
     }
   }

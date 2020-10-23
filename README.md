@@ -24,7 +24,7 @@
 
 
 
-skrollr을 사용하여 스크롤이 내려갈 때마다 배경색이 바뀌는 효과를 주었고, 브라우저의 문서 위치 Y값을 반환하는 pageYOffset(IE호환)과 transition을 사용하여 스크롤이 부드럽게 내려가듯 연출하였습니다. Image Contents들 경우 이미지는 background로 고정되어 있고 가장 최상의 태그가 스크롤에 따라 움직이며 overflow: hidden을 주어 마치 이미지가 올라가고 내려가는 듯한 느낌으로 작업했습니다.
+스크롤이 내려갈 때마다 배경색이 바뀌는 효과를 주었고, 브라우저의 문서 위치 Y값을 반환하는 pageYOffset(IE호환)과 transition을 사용하여 스크롤이 부드럽게 내려가듯 연출하였습니다. Image Contents들 경우 이미지는 background로 고정되어 있고 가장 최상의 태그가 스크롤에 따라 움직이며 overflow: hidden을 주어 마치 이미지가 올라가고 내려가는 듯한 느낌으로 작업했습니다.
 
 ## # Demo
 >[Road to FE Developer](https://sjroad.netlify.app/)
@@ -42,12 +42,11 @@ skrollr을 사용하여 스크롤이 내려갈 때마다 배경색이 바뀌는 
 - HTML ` + HTML5`
 - CSS Preprocess ` + SCSS`
 - JavaScript ` + ES6`
-- jQuery ` + gsap animejs skrollr`
+- jQuery ` + gsap animejs`
 ---
 ### UI library
 - gsap `TweenMax`
 - animejs
-- skrollr
 ---
 ### Ecosystem
 - Webpack

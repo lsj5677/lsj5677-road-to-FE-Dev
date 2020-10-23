@@ -1,8 +1,9 @@
 import $ from 'jquery';
-import skrollr from 'skrollr';
 import gsap from 'gsap';
 import anime from 'animejs';
 
+let body;
+let section;
 let headerNavigation;
 let headerContact;
 let navIconBtn;
@@ -11,10 +12,18 @@ let mainContainer;
 let scrollImgContents;
 let CLOSE = 'close-btn';
 
+const screenSize = {
+  large: 1024,
+  medium: 768,
+  small: 546,
+};
+
+
 init();
 showHeader();
 scrollEffect();
 handleCursor();
+
 function init() {
   initElements();
   fadeInOutText('.intro h4', '.intro h4 span');
@@ -22,6 +31,8 @@ function init() {
 }
 
 function initElements() {
+  body = $('body');
+  section = $('.section');
   headerNavigation = $('.header-navigation');
   headerContact = $('.header-contact');
   navIconBtn = $('.nav-icon-btn');
@@ -31,8 +42,10 @@ function initElements() {
 }
 
 function handleCursor() {
-  cursorXY();
-  hoverEffect();
+  if (window.innerWidth >= screenSize.medium) {
+    cursorXY();
+    hoverEffect();
+  }
 }
 
 function showHeader() {
@@ -41,7 +54,7 @@ function showHeader() {
 }
 
 function scrollEffect() {
-  scrollChangeBgColor();
+  scrollChangeBgColors();
   scrollSlowly();
   upDownImg();
 }
@@ -156,6 +169,27 @@ function slideUpBackground() {
   });
 }
 
+function scrollChangeBgColors() {
+  if ($(window).scrollTop() == $(document).height() - $(window).height()) { console.log('End of Window'); }
+
+  const $window = $(window);
+  $(window).scroll(() => {
+    const scroll = $window.scrollTop() + ($window.height() / 4);
+
+    section.each((i, sec) => {
+
+      if ($(sec).position().top <= scroll && $(sec).position().top + $(sec).height() > scroll) {
+        body.removeClass(function (index, css) {
+          return (css.match(/(^|\s)bg-color-\S+/g) || []).join(' ');
+        });
+        body.addClass(`bg-color-${$(sec).data('bg')}`);
+      }
+    });
+  });
+}
+
+
+
 function slideRightNavigation() {
   navIconBtn.click(() => {
     headerNavigation.toggleClass('nav-on');
@@ -167,12 +201,6 @@ function slideLeftContact() {
   contactIconBtn.click(() => {
     headerContact.toggleClass('contact-on');
     contactIconBtn.toggleClass(CLOSE);
-  });
-}
-
-function scrollChangeBgColor() {
-  skrollr.init({
-    forceHeight: false
   });
 }
 
@@ -198,3 +226,5 @@ function upDownImg() {
     });
   });
 }
+
+
