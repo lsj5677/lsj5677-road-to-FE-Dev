@@ -52,11 +52,14 @@ $transition-3s : all .3s ease-in-out;
   -o-animation-delay: 3s;
 }
 
-#skrollr-body {
-  float: left;
-  width: 100%;
-  height: 100%;
+@include for-size(medium-width){
+  #skrollr-body {
+    float: left;
+    width: 100%;
+    height: 100%;
+  }
 }
+
 
 .wrap {
   background: #d8dbe4;
