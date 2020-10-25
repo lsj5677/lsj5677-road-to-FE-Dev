@@ -168,10 +168,10 @@ function slideUpBackground() {
 
 function showMainContents() {
   setTimeout(() => {
-    titleImg.fadeIn(1500, () => {
+    titleImg.fadeIn(600, () => {
       titleDesc.animate({ opacity: '1' }, 1000);
       titleImgBg.animate({ left: '6px' }, 1000);
-      mainTitle.animate({ opacity: '1', left: 0 }, 1000);
+      mainTitle.animate({ opacity: '1', left: 0 }, 800);
       subTitle.animate({ opacity: '1', left: 0 }, 1500);
       titleKeyword.animate({ opacity: '1' }, 2000);
     });
