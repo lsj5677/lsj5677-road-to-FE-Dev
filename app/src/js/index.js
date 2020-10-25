@@ -11,6 +11,12 @@ let contactIconBtn;
 let mainContainer;
 let scrollImgContents;
 let CLOSE = 'close-btn';
+let titleImg;
+let titleImgBg;
+let mainTitle;
+let subTitle;
+let titleDesc;
+let titleKeyword;
 
 const screenSize = {
   large: 1024,
@@ -18,11 +24,11 @@ const screenSize = {
   small: 546,
 };
 
-
 init();
 showHeader();
 scrollEffect();
 handleCursor();
+showMainContents();
 
 function init() {
   initElements();
@@ -39,6 +45,12 @@ function initElements() {
   contactIconBtn = $('.contact-icon-btn');
   mainContainer = $('.main-container');
   scrollImgContents = $('.work-img-box a');
+  titleImg = $('.title-image');
+  titleImgBg = $('.title-image-bg');
+  mainTitle = $('.main-title');
+  subTitle = $('.sub-title');
+  titleDesc = $('.title-desc');
+  titleKeyword = $('.title-keyword');
 }
 
 function handleCursor() {
@@ -79,11 +91,11 @@ function cursorXY() {
 }
 
 function hoverEffect() {
-  let menuLinkCursorShape = new TimelineMax({ paused: true })
+  let menuLinkCursorShape = new gsap.core.Timeline({ paused: true })
     .to('.custom-cursor', 0.3, { scale: 0.4, backgroundColor: '#fff' });
 
   $('.btn-icon, .footer-item').each((i, ele) => {
-    let btnIconTl = new TimelineMax({ paused: true })
+    let btnIconTl = new gsap.core.Timeline({ paused: true })
       .to($(ele), 0.3, { opacity: 0.6 });
     ele.animation = btnIconTl;
   });
@@ -99,11 +111,11 @@ function hoverEffect() {
     }
   );
 
-  let moreCursorShape = new TimelineMax({ paused: true })
+  let moreCursorShape = new gsap.core.Timeline({ paused: true })
     .to('.custom-cursor', 0.3, { scale: 2 })
     .to('.more-shape', 0.3, { opacity: 1 });
   $('.work-img-box').each((i, workImgBox) => {
-    let workImgHoverTl = new TimelineMax({ paused: true })
+    let workImgHoverTl = new gsap.core.Timeline({ paused: true })
       .to($(workImgBox), 0.3, { opacity: 1 })
       .to($(workImgBox).find('span'), 0.3, { opacity: 1 });
 
@@ -120,7 +132,6 @@ function hoverEffect() {
       moreCursorShape.reverse();
     }
   );
-
 }
 
 function splitText(text) {
@@ -140,33 +151,31 @@ function fadeInOutText(el, target) {
     .timeline({ loop: false })
     .add({
       targets: target,
-      translateX: [-100, 0],
-      translateZ: 0,
+      scale: [4, 1],
       opacity: [0, 1],
+      duration: 3000,
       easing: "easeOutExpo",
-      duration: 300,
-      delay: function (ele, i) {
-        return 200 + 50 * i;
-      }
+      delay: (ele, i) => i * 100
     })
-    .add({
-      targets: target,
-      translateX: [0, 100],
-      opacity: [1, 0],
-      easing: "easeInExpo",
-      duration: 500,
-      delay: function (ele, i) {
-        return 200 + 50 * i;
-      }
-    });
 }
 
 function slideUpBackground() {
-  TweenMax.to('.intro', 0.6, {
-    delay: 2.5,
+  gsap.core.Tween.to('.intro', 0.5, {
+    delay: 2,
     top: '-100vh',
-    ease: Expo.easeInOut
   });
+}
+
+function showMainContents() {
+  setTimeout(() => {
+    titleImg.fadeIn(1500, () => {
+      titleDesc.animate({ opacity: '1' }, 1000);
+      titleImgBg.animate({ left: '6px' }, 1000);
+      mainTitle.animate({ opacity: '1', left: 0 }, 1000);
+      subTitle.animate({ opacity: '1', left: 0 }, 1500);
+      titleKeyword.animate({ opacity: '1' }, 2000);
+    });
+  }, 2000);
 }
 
 function scrollChangeBgColors() {
@@ -187,8 +196,6 @@ function scrollChangeBgColors() {
     });
   });
 }
-
-
 
 function slideRightNavigation() {
   navIconBtn.click(() => {
@@ -226,5 +233,4 @@ function upDownImg() {
     });
   });
 }
-
 

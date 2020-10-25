@@ -41,17 +41,6 @@ $transition-3s : all .3s ease-in-out;
   color: $white;
 }
 
-%main-contents-animation {
-  animation: animatedFadeUp 4s ease-in-out;
-  -moz-animation: animatedFadeUp 4s ease-in-out;
-  -ms-animation: animatedFadeUp 4s ease-in-out;
-  -o-animation: animatedFadeUp 4s ease-in-out;
-  animation-delay: 3s;
-  -moz-animation-delay: 3s;
-  -ms-animation-delay: 3s;
-  -o-animation-delay: 3s;
-}
-
 body {
   transition: background-color 1s ease;
 }
@@ -117,6 +106,10 @@ body {
 
     @include for-size(small-width) {
       font-size: 3em;
+    }
+
+    span {
+      display: inline-block;
     }
   }
 }
@@ -281,10 +274,11 @@ body {
         }
 
         .contact-info-img {
-          width: 80px;
-          height: 80px;
+          width: 100px;
+          height: 120px;
           border-radius: 50%;
           margin-bottom: 30px;
+          background: $custom-yellow;
         }
       }
 
@@ -298,11 +292,7 @@ body {
 
       .contact-sns-items .contact-sns-item > a {
         @extend %header-menu-link;
-        font-size: 1.5em;
-
-        i {
-          font-size: 20px;
-        }
+        font-size: 13px;
 
         &:hover {
           color: $black;
@@ -325,7 +315,6 @@ body {
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    @extend %main-contents-animation;
 
     @include for-size(medium-width) {
       align-items: baseline;
@@ -351,6 +340,9 @@ body {
       .sub-title {
         font-size: 6em;
         color: $custom-yellow;
+        position: relative;
+        left: 50px;
+        opacity: 0;
 
         @include for-size(medium-width) {
           font-size: 7em;
@@ -365,6 +357,8 @@ body {
         position: absolute;
         top: 30%;
         font-size: 3em;
+        left: -40px;
+        opacity: 0;
 
         @include for-size(medium-width) {
           top: 38%;
@@ -379,6 +373,7 @@ body {
       p {
         font-size: 1.5em;
         margin-top: 1em;
+        opacity: 0;
 
         @include for-size(small-width) {
           font-size: 1em;
@@ -387,6 +382,7 @@ body {
     }
 
     .title-image {
+      display:none;
       max-width: 130px;
       position: absolute;
       top: 50%;
@@ -401,6 +397,14 @@ body {
         max-width: 100px;
         transform: translate3d(-20%, -30%, 0);
       }
+
+      .title-image-bg {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: auto;
+        z-index: -1;
+      }
     }
 
     .title-keyword {
@@ -408,6 +412,7 @@ body {
       text-transform: uppercase;
       font-family: $sans-serif;
       font-weight: 700;
+      opacity: 0;
 
       @include for-size(medium-width) {
         top: 70%;
@@ -464,7 +469,6 @@ body {
       margin: 0 auto;
       pointer-events: none;
       text-align: center;
-      @extend %main-contents-animation;
 
       .about-title {
         position: relative;
@@ -552,7 +556,6 @@ body {
       cursor: none;
       overflow: hidden;
       border-bottom: 5px solid $custom-yellow;
-      @extend %main-contents-animation;
 
       @include for-size(medium-width) {
         width: 85%;
@@ -702,7 +705,7 @@ body {
     @include for-size(small-width){
       flex-wrap: wrap;
       justify-content: center;
-      line-height: 1.5;
+      line-height: 3;
     }
 
     .footer-items {
