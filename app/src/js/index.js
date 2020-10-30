@@ -2,6 +2,8 @@ import $ from 'jquery';
 import gsap from 'gsap';
 import anime from 'animejs';
 
+const CLASSNAME_CLOSE_BTN = 'close-btn';
+
 let body;
 let section;
 let headerNavigation;
@@ -10,7 +12,6 @@ let navIconBtn;
 let contactIconBtn;
 let mainContainer;
 let scrollImgContents;
-let CLOSE = 'close-btn';
 let titleImg;
 let titleImgBg;
 let mainTitle;
@@ -178,6 +179,10 @@ function showMainContents() {
   }, 2000);
 }
 
+function removeBgColorClass(i, css) {
+  return (css.match(/(^|\s)bg-color-\S+/g) || []).join(' ');
+}
+
 function scrollChangeBgColors() {
   if ($(window).scrollTop() == $(document).height() - $(window).height()) { console.log('End of Window'); }
 
@@ -188,9 +193,7 @@ function scrollChangeBgColors() {
     section.each((i, sec) => {
 
       if ($(sec).position().top <= scroll && $(sec).position().top + $(sec).height() > scroll) {
-        body.removeClass(function (index, css) {
-          return (css.match(/(^|\s)bg-color-\S+/g) || []).join(' ');
-        });
+        body.removeClass(removeBgColorClass);
         body.addClass(`bg-color-${$(sec).data('bg')}`);
       }
     });
@@ -200,14 +203,14 @@ function scrollChangeBgColors() {
 function slideRightNavigation() {
   navIconBtn.click(() => {
     headerNavigation.toggleClass('nav-on');
-    navIconBtn.toggleClass(CLOSE);
+    navIconBtn.toggleClass(CLASSNAME_CLOSE_BTN);
   });
 }
 
 function slideLeftContact() {
   contactIconBtn.click(() => {
     headerContact.toggleClass('contact-on');
-    contactIconBtn.toggleClass(CLOSE);
+    contactIconBtn.toggleClass(CLASSNAME_CLOSE_BTN);
   });
 }
 
