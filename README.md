@@ -35,7 +35,7 @@
 |[LV Redesign](https://sjroad.netlify.app/lv.html)| Louis Vuitton Redesign과 함께 html / scss / javascript를 사용하여 작업|
 |[Lottery Game](https://sjroad.netlify.app/lottery.html)|Vanilla JavaScript를 사용하여 구매 - 발권 - 당첨통계를 구현|
 |[Clock](https://sjroad.netlify.app/clock.html)|Date()를 사용하여 실시간 시간을 받아오고 해당 시간을 이용하여 UI 구현|
-|[Landing Page](https://sjroad.netlify.app/landing.html)|This page is under construction.|
+|[Landing Page](https://sjroad.netlify.app/landing.html)|랜딩페이지 레이아웃 구현|
 
 ## # Stack
 ### Skills
