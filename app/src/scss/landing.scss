@@ -129,6 +129,14 @@ $landing-light-gray: #EEF1F5;
           font-size: 5rem;
           font-weight: 700;
           color: $landing-dark-blue;
+
+          @include for-size(medium-width) {
+            font-size: 4rem;
+          }
+
+          @include for-size(xxsmall-width) {
+            padding-top: 70px;
+          }
         }
 
         .banner-desc {
